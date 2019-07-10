@@ -1,0 +1,50 @@
+- name: K8s | Instal kube tools
+  block:
+  - name: K8s | Copy k8s repo config
+    yum_repository:
+      name: kubernetes
+      description: Kubernetes
+      baseurl: "https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64"
+      gpgkey: "https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
+      gpgcheck: yes
+      enabled: yes
+
+  - name: K8s | install kubectl
+    dnf:
+      name:
+      - kubectl
+      state: latest
+    tags:
+    - k8s-kubectl
+  tags:
+  - k8s
+  - kubectl
+
+- name: K8s | Install minkube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: "/usr/local/bin/minkube"
+    mode: 0755
+  tags:
+  - k8s
+  - minikube
+
+- name: K8s | install k9s
+  unarchive:
+    src: https://github.com/derailed/k9s/releases/download/{{ k9s_ver }}/k9s_{{ k9s_ver }}_Linux_x86_64.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755
+  tags:
+  - k8s
+  - k9s
+
+- name: K8s | install kubespy
+  unarchive:
+    src: https://github.com/pulumi/kubespy/releases/download/{{ kubespy_ver }}/kubespy-linux-amd64.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755
+  tags:
+  - k8s
+  - kubespy

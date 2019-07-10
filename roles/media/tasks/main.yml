@@ -1,0 +1,31 @@
+- name: Media | Install media
+  dnf:
+    name:
+    - gstreamer-plugins-*
+    - gstreamer1-plugins-*
+    - minidlna
+    - flameshot
+    - rawtherapee
+    - inkscape
+    - gimp
+    state: latest
+  tags:
+  - media
+
+
+#- name: Install yEd
+#  become: false
+#  block:
+#  - name: Download yEd installer
+#    get_url:
+#      url: https://www.yworks.com/resources/yed/demo/yEd-3.19_with-JRE8_64-bit_setup.sh
+#      dest: /tmp/yed-installer.sh
+#      mode: 0755
+#
+#  - name: Execute the zsh-installer.sh
+#    shell: /tmp/yed-installer.sh -q
+#
+#  - name: Remove the zsh-installer.sh
+#    file:
+#      path:  /tmp/yed-installer.sh
+#      state: absent

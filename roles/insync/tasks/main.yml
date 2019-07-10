@@ -1,0 +1,21 @@
+- name: Insync | Install insync
+  block:
+  - name: Add gpg key
+    rpm_key:
+      state: present
+      key: "https://d2t3ff60b2tol4.cloudfront.net/repomd.xml.key"
+  - name: Add repo
+    yum_repository:
+      name: insync
+      description: insync repo
+      baseurl: "http://yum.insynchq.com/fedora/{{fedora_version_fallback}}/"
+      gpgkey: "https://d2t3ff60b2tol4.cloudfront.net/repomd.xml.key"
+      gpgcheck: yes
+      enabled: yes
+  - name: install packets
+    dnf:
+      name:
+      - insync
+      state: latest
+  tags:
+  - insync

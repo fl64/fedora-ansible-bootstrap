@@ -1,0 +1,8 @@
+- name: Dev | install dev tools
+  dnf:
+    name:
+    - go
+    - python3-virtualenv
+    state: present
+  tags:
+  - dev

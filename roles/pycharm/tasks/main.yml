@@ -1,0 +1,27 @@
+---
+- name: Pycharm | download Pycharm
+  get_url:
+    url: "https://download.jetbrains.com/python/pycharm-community-{{ pycharm_version }}.tar.gz"
+    dest: "/tmp/pycharm-community-{{ pycharm_version }}.tar.gz"
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - pycharm
+
+- name: Pycharm | install Pycharm
+  unarchive:
+    src: "/tmp/pycharm-community-{{ pycharm_version }}.tar.gz"
+    dest: "/opt"
+    creates: "/opt/pycharm-community-{{ pycharm_version }}"
+    copy: false
+  tags:
+  - pycharm
+
+- name: Pycharm | Create PyCharm Community Edition desktop entry
+  become: false
+  template:
+    src: pycharm.desktop.j2
+    dest: "~/.local/share/applications/pycharm-community-{{ pycharm_version }}.desktop"
+  tags:
+  - pycharm
