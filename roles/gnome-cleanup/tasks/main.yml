@@ -1,0 +1,25 @@
+- name: gnome-cleanup | Remove packets
+  dnf:
+    name:
+    - abrt
+    - gnome-software
+    - PackageKit
+    state: absent
+  tags:
+  - gnome-cleanup
+
+- name: gnome-cleanup | Mask services
+  become: false
+  systemd:
+    name: "{{ item }}"
+    masked: true
+    user: true
+  with_items:
+  - evolution-addressbook-factory
+  - evolution-calendar-factory
+  - evolution-source-registry
+  - tracker-miner-apps
+  - tracker-miner-fs
+  - tracker-store
+  tags:
+  - gnome-cleanup

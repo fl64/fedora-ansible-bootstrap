@@ -1,0 +1,18 @@
+- name: Dev | install dev tools
+  dnf:
+    name:
+    - go
+    - strace
+    - python3-virtualenv
+    - git-secret
+    state: present
+  tags:
+  - dev
+
+- name: Dev | Gitkrtaken
+  dnf:
+    name:
+    - https://release.gitkraken.com/linux/gitkraken-amd64.rpm
+    state: present
+  tags:
+  - dev

@@ -1,0 +1,102 @@
+- name: Look_and_feel | Install gnome ext
+  block:
+  - name: Look_and_feel | Install gnome ext installer
+    get_url:
+      url:  https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/ubuntugnome/gnomeshell-extension-manage
+      dest: /usr/local/bin/gnomeshell-extension-manage
+      mode: 0755
+
+  - name: Look_and_feel | Install gnome exts
+    become: false
+    shell: |
+      #/usr/local/bin/gnomeshell-extension-manage --install --extension-id 6     --version latest   #Applications Menu by fmuellner
+      /usr/local/bin/gnomeshell-extension-manage --install --extension-id 307   --version latest   #Dash to Dock by michele_g
+      /usr/local/bin/gnomeshell-extension-manage --install --extension-id 615   --version latest   #KStatusNotifierItem/AppIndicator Support by 3v1n0
+      /usr/local/bin/gnomeshell-extension-manage --install --extension-id 1357  --version latest   #Notes by Maestroschan
+      /usr/local/bin/gnomeshell-extension-manage --install --extension-id 8     --version latest   #Places Status Indicator by fmuellner
+      /usr/local/bin/gnomeshell-extension-manage --install --extension-id 120   --version latest   #system-monitor by Cerin
+      /usr/local/bin/gnomeshell-extension-manage --install --extension-id 19    --version latest   #User Themes by fmuellner
+      /usr/local/bin/gnomeshell-extension-manage --install --extension-id 1228  --version latest   #Arc menu
+      #/usr/local/bin/gnomeshell-extension-manage --install --extension-id 690   --version latest   #Easy screencast
+    notify:
+    - reload gnome-shell
+
+- name: Look_and_feel | dconf
+  become: false
+  block:
+  - name: Look_and_feel | install python package
+    pip:
+      name: psutil
+      extra_args: --user
+      executable: pip3
+
+  - name: Look_and_feel | Read currently available keyboard layouts in Gnome
+    dconf:
+      key: "{{ item.key }}"
+      state: present
+      value: "{{ item.value }}"
+    with_items:
+    - { key: "/org/gnome/desktop/wm/preferences/titlebar-font", value: "'Fira Sans Bold 11'"}
+    - { key: "/org/gnome/desktop/interface/document-font-name", value: "'Fira Sans 11'"}
+    - { key: "/org/gnome/desktop/interface/font-name", value: "'Fira Sans 11'"}
+    - { key: "/org/gnome/desktop/interface/monospace-font-name", value: "'Source Code Pro 9'"}
+
+    - { key: "/org/gnome/desktop/interface/gtk-theme", value: "'Arc-Darker-solid'"}
+    - { key: "/org/gnome/shell/extensions/user-theme", value: "'Arc-Dark-solid'"}
+
+    - { key: "/org/gnome/desktop/interface/cursor-theme", value: "'Paper'"}
+    - { key: "/org/gnome/desktop/interface/icon-theme", value: "'Paper'"}
+
+    - { key: "/org/gnome/nautilus/preferences/default-folder-viewer", value: "'list-view'"}
+    - { key: "/org/gnome/nautilus/preferences/default-sort-order", value: "'type'"}
+    - { key: "/org/gnome/nautilus/list-view/default-visible-columns", value: "[ 'name', 'size', 'date_modified', 'type', 'permissions', 'star']"}
+    - { key: "/org/gnome/nautilus/icon-view/default-zoom-level", value: "'small'"}
+    - { key: "/org/gnome/nautilus/list-view/default-zoom-level", value: "'small'"}
+    - { key: "/org/gnome/nautilus/preferences/default-folder-viewer", value: "'list-view'"}
+    - { key: "/org/gnome/nautilus/preferences/default-sort-order", value: "'type'"}
+    
+    # Dialog box
+    - { key: "/org/gtk/Settings/FileChooser/sort-directories-first", value: "'true'"}
+
+
+    - { key: "/org/gnome/desktop/wm/preferences/button-layout", value: "'appmenu:minimize,maximize,close'"}
+
+    - { key: "/org/gnome/desktop/input-sources/xkb-options", value: "['grp:alt_shift_toggle']"}
+
+    - { key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled", value: "true"}
+
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/apply-custom-theme", value: "false"}
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/background-opacity", value: "0.0"}
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/dock-position", value: "'BOTTOM'"}
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size", value: "32"}
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/apply-custom-theme", value: "false"}
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/apply-custom-theme", value: "false"}
+    #calendar
+    - { key: "/org/gnome/evolution/calendar/week-start-day-name", value: "'monday'"}
+    #system-monitor
+    - { key: "/org/gnome/shell/extensions/system-monitor/cpu-show-text", value: "false"}
+    - { key: "/org/gnome/shell/extensions/system-monitor/cpu-graph-width", value: "32"}
+    - { key: "/org/gnome/shell/extensions/system-monitor/disk-show-text", value: "false"}
+    - { key: "/org/gnome/shell/extensions/system-monitor/disk-graph-width", value: "32"}
+    - { key: "/org/gnome/shell/extensions/system-monitor/memory-show-text", value: "false"}
+    - { key: "/org/gnome/shell/extensions/system-monitor/memory-graph-width", value: "32"}
+    - { key: "/org/gnome/shell/extensions/system-monitor/swap-show-text", value: "false"}
+    - { key: "/org/gnome/shell/extensions/system-monitor/swap-graph-width", value: "32"}
+    - { key: "/org/gnome/shell/extensions/system-monitor/net-show-text", value: "false"}
+    - { key: "/org/gnome/shell/extensions/system-monitor/net-graph-width", value: "32"}
+
+    - { key: "/system/locale/region", value: "'ru_RU.UTF-8'"}
+
+  #workaround
+  # [WARNING]: The value [['xkb', 'ru'], ['xkb', 'us']] (type list) in a string field was converted to "[['xkb', 'ru'], ['xkb', 'us']]" (type string). If this does not look like what you expect, quote the
+  # entire value to ensure it does not change.
+  - name: Look_and_feel | Set mru-sources
+    dconf:
+      key: "/org/gnome/desktop/input-sources/mru-sources"
+      state: present
+      value: "[('xkb', 'ru'), ('xkb', 'us')]"
+  - name: Look_and_feel | Set sources
+    dconf:
+      key: "/org/gnome/desktop/input-sources/sources"
+      state: present
+      value: "[('xkb', 'ru'), ('xkb', 'us')]"

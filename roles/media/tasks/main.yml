@@ -1,0 +1,54 @@
+- name: Media | Install media
+  dnf:
+    name:
+    - gstreamer-plugins-*
+    - gstreamer1-plugins-*
+    - minidlna
+    - flameshot
+    - rawtherapee
+    - inkscape
+    - gimp
+    - vlc
+    - ffmpeg-libs
+    - youtube-dl
+    - ImageMagick
+    - audacious
+    - hydrapaper
+    - pinta
+    state: latest
+  tags:
+  - media
+
+- name: Media | Cleanup
+  dnf:
+    name:
+    - rhythmbox
+    - cheese
+    state: absent
+  tags:
+  - media
+
+
+- name: Media | audacious winamp skin
+  copy:
+    src: "{{ item }}"
+    dest: /usr/share/audacious/Skins/
+  with_fileglob:
+  - "*.wsz"
+
+#- name: Install yEd
+#  become: false
+#  block:
+#  - name: Download yEd installer
+#    get_url:
+#      url: https://www.yworks.com/resources/yed/demo/yEd-3.19_with-JRE8_64-bit_setup.sh
+#      dest: /tmp/yed-installer.sh
+#      mode: 0755
+#
+#  - name: Execute the zsh-installer.sh
+#    shell: /tmp/yed-installer.sh -q
+#
+#  - name: Remove the zsh-installer.sh
+#    file:
+#      path:  /tmp/yed-installer.sh
+#      state: absent

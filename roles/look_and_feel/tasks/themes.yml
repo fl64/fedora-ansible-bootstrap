@@ -1,0 +1,8 @@
+- name: Look_and_feel | Install ARC theme && gnome tweak
+  dnf:
+    name:
+    - arc-theme
+    - gnome-tweak-tool
+    state: present
+  tags:
+  - look_and_feel

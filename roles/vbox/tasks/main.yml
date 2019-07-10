@@ -1,0 +1,36 @@
+  - name: VBox | Virtual box
+    block:
+    - name: VBox | install packets
+      dnf:
+        name:
+        - kernel-headers
+        - kernel-devel
+        - dkms
+        - elfutils-libelf-devel
+        - qt5-qtx11extras
+        state: present
+    - name: VBox | Add gpg key
+      rpm_key:
+        state: present
+        key: "https://www.virtualbox.org/download/oracle_vbox.asc"
+    - name: VBox | Add repo
+      yum_repository:
+        name: virtualbox
+        description: Fedora $releasever - $basearch - VirtualBox
+        baseurl: "http://download.virtualbox.org/virtualbox/rpm/fedora/{{ fedora_version }}/$basearch"
+        gpgkey: "https://www.virtualbox.org/download/oracle_vbox.asc"
+        gpgcheck: yes
+        enabled: yes
+    - name: VBox | install packets
+      dnf:
+        name:
+        - VirtualBox-6.0
+        state: latest
+    - name: VBox | Adding user to group
+      user:
+        name: "{{ lookup('env','USER') }}"
+        groups: vboxusers
+        append: yes
+    tags:
+    - vbox
+    - virtualbox

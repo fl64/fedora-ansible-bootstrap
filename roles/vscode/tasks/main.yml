@@ -1,0 +1,63 @@
+- name: VSCode | Install VS Code
+  block:
+  - name: VSCode | Add gpg key
+    rpm_key:
+      state: present
+      key: "https://packages.microsoft.com/keys/microsoft.asc"
+  - name: VSCode | Add repo
+    yum_repository:
+      name: vscode
+      description: Visual Studio Code
+      baseurl: "https://packages.microsoft.com/yumrepos/vscode"
+      gpgcheck: yes
+      gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+      enabled: yes
+  - name: VSCode | install packets
+    dnf:
+      name:
+      - code
+      state: latest
+  - name: VSCode | install exts
+    become: false
+    shell: |
+      code --install-extension alefragnani.project-manager --force
+      code --install-extension azemoh.one-monokai --force
+      code --install-extension bbenoist.vagrant --force
+      code --install-extension bierner.markdown-preview-github-styles --force
+      code --install-extension codezombiech.gitignore --force
+      code --install-extension Compilenix.vscode-zonefile --force
+      code --install-extension dhoeric.ansible-vault --force
+      code --install-extension donjayamanne.git-extension-pack --force
+      code --install-extension donjayamanne.githistory --force
+      code --install-extension eamodio.gitlens --force
+      code --install-extension emmanuelbeziat.vscode-great-icons --force
+      code --install-extension eriklynd.json-tools --force
+      code --install-extension exiasr.hadolint --force
+      code --install-extension hangxingliu.vscode-nginx-conf-hint --force
+      code --install-extension Kelvin.vscode-sshfs --force
+      code --install-extension kenhowardpdx.vscode-gist --force
+      code --install-extension mauve.terraform --force
+      code --install-extension mikestead.dotenv --force
+      code --install-extension mindginative.terraform-snippets --force
+      code --install-extension mkxml.vscode-filesize --force
+      code --install-extension monokai.theme-monokai-pro-vscode --force
+      code --install-extension ms-azuretools.vscode-docker --force
+      code --install-extension ms-python.python --force
+      code --install-extension ms-vscode.Go --force
+      code --install-extension ms-vscode.powershell --force
+      code --install-extension ms-vscode.sublime-keybindings --force
+      code --install-extension PKief.material-icon-theme --force
+      code --install-extension richie5um2.vscode-sort-json --force
+      code --install-extension rupisaini.vscode-ansible-linter --force
+      code --install-extension samuelcolvin.jinjahtml --force
+      code --install-extension Shan.code-settings-sync --force
+      code --install-extension shanoor.vscode-nginx --force
+      code --install-extension shardulm94.trailing-spaces --force
+      code --install-extension vscode-icons-team.vscode-icons --force
+      code --install-extension vscoss.vscode-ansible --force
+      code --install-extension windmilleng.vscode-go-autotest --force
+      code --install-extension ziyasal.vscode-open-in-github --force
+      code --install-extension WakaTime.vscode-wakatime --force
+  tags:
+  - vs
+  - vscode

@@ -1,0 +1,22 @@
+- name: Look_and_feel | Paper icon install
+  block:
+  - name: Look_and_feel | Add gpg key for paper icon repo
+    rpm_key:
+      state: present
+      key: "https://d2t3ff60b2tol4.cloudfront.net/repomd.xml.key"
+  - name: Look_and_feel | Add paper icon repo
+    yum_repository:
+      name: home:snwh:paper
+      description: Paper Project (Fedora_25)
+      baseurl: "http://download.opensuse.org/repositories/home:/snwh:/paper/Fedora_25/"
+      gpgkey: "http://download.opensuse.org/repositories/home:/snwh:/paper/Fedora_25/repodata/repomd.xml.key"
+      gpgcheck: yes
+      enabled: yes
+  - name: Look_and_feel | install paper icon theme
+    dnf:
+      name:
+      - paper-icon-theme
+      state: latest
+  tags:
+  - look_and_feel
+  - paper

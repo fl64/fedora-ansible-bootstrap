@@ -1,0 +1,25 @@
+- name: Terminal | tilix settings
+  shell: | 
+    dconf load /com/gexperts/Tilix/ << EOF
+    [/]
+    prompt-on-close=true
+    quake-specific-monitor=0
+    theme-variant='dark'
+
+    [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+    background-color='#283033'
+    badge-color='#AC7EA8'
+    badge-color-set=false
+    bold-color-set=false
+    cursor-background-color='#A1B0B8'
+    cursor-colors-set=false
+    cursor-foreground-color='#BDC3C7'
+    font='FuraCode Nerd Font weight=453 10'
+    foreground-color='#CDCDCD'
+    highlight-colors-set=false
+    palette=['#000000', '#A60001', '#00BB00', '#FECD22', '#3A9BDB', '#BB00BB', '#00BBBB', '#BBBBBB', '#555555', '#FF0003', '#93C863', '#FEF874', '#A1D7FF', '#FF55FF', '#55FFFF', '#FFFFFF']
+    use-system-font=false
+    use-theme-colors=false
+    visible-name='Default'
+    EOF
+  tags: terminal

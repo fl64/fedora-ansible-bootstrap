@@ -1,0 +1,13 @@
+- name:
+  include_tasks: paper_icons.yml
+
+- name:
+  include_tasks: themes.yml
+
+- name:
+  include_tasks: gnome.yml
+  tags: [gnome]
+
+- name:
+  include_tasks: fonts.yml
+  tags: [fonts]

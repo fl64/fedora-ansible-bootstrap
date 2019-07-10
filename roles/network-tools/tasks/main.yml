@@ -1,0 +1,42 @@
+- name: Network | Install wireshark and tshark
+  block:
+  - name: Network | install packets
+    dnf:
+      name:
+      - wireshark
+      - wireshark-cli
+      state: latest
+  - name: Network | Adding user to group
+    user:
+      name: "{{ lookup('env','USER') }}"
+      groups: wireshark
+      append: yes
+  tags:
+  - wireshark
+  - network
+  - net
+
+
+- name: Network | Install network utils
+  dnf:
+    name:
+    - iftop
+    - ifstat
+    - macchanger
+    - bind-utils
+    - iperf
+    - ethtool
+    state: latest
+  tags:
+  - network
+  - net
+
+- name: Network | install ngrok
+  unarchive:
+    src: https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755
+  tags:
+  - network
+  - net
