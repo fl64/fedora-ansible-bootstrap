@@ -7,9 +7,11 @@
   become: yes
   roles:
   - role: rpm-fusion
+    vars:
+      fedora_version: 31  
   - role: base
     vars:
-      fedora_version: 30
+      fedora_version: 31
     tags: [base]
   - role: gnome-cleanup
     tags: [gnome-cleanup]
@@ -51,7 +53,7 @@
     tags: [insync]
   - role: vbox
     vars:
-      fedora_version: 30
+      fedora_version: 31
     tags: [vbox]
   - role: zsh
     vars:
