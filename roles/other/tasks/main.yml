@@ -1,0 +1,26 @@
+  - name: Keychron k2
+    block:
+    - name: Keychron k2 | create service
+      copy:
+        content: |
+            [Unit]
+            Description=Keychron k2 fn keys
+
+            [Service]
+            Type=oneshot
+            ExecStart=bash -c "echo 2 > /sys/module/hid_apple/parameters/fnmode"
+            ExecStart=bash -c "echo 1 > /sys/module/hid_apple/parameters/swap_opt_cmd"
+            RemainAfterExit=true
+            StandardOutput=journal
+
+            [Install]
+            WantedBy=multi-user.target
+        dest: /etc/systemd/system/keychron-k2.service
+    - name: Keychron k2 | Start service
+      systemd:
+        name: keychron-k2
+        daemon_reload: yes
+        enabled: true
+        state: started
+    tags:
+    - keychron

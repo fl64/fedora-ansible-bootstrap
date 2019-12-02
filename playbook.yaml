@@ -8,7 +8,7 @@
   roles:
   - role: rpm-fusion
     vars:
-      fedora_version: 31  
+      fedora_version: 31
   - role: base
     vars:
       fedora_version: 31
@@ -59,8 +59,8 @@
     vars:
       wakatime: true
     tags: [zsh]
-#  - role: term
-#    tags: [term, terminal]
+  - role: term
+    tags: [term, terminal]
   - role: devops-tools
     vars:
       terraform_ver: 0.12.12
@@ -83,3 +83,7 @@
     tags: [security,sec]
   - role: lab
     tags: [lab]
+  - role: goland
+    tags: [goland]
+    vars:
+      goland_version: 2019.3

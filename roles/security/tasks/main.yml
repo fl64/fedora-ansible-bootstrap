@@ -1,0 +1,32 @@
+- name: Security | Install security utils
+  dnf:
+    name:
+    - nmap
+    - scap-workbench
+    - dnf-automatic
+    state: latest
+  tags:
+  - security
+  - sec
+
+- name: Security | Configure autoupdates
+  ini_file:
+    path: /etc/dnf/automatic.conf
+    section: "{{ item.section }}"
+    option:  "{{ item.option }}"
+    value:   "{{ item.value }}"
+  with_items:
+  - { section: commands, option: "upgrade_type", value: "security" }
+  - { section: commands, option: "apply_updates", value: "yes" }
+  tags:
+  - security
+  - sec
+
+- name: Security | Enable service
+  systemd:
+    name: dnf-automatic-install.timer
+    state: started
+    enabled: true
+  tags:
+  - security
+  - sec

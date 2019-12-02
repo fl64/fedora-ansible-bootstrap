@@ -1,0 +1,24 @@
+- name: Lab | Install dnsmasq
+  block:
+  - name: Lab | Install dnsmasq
+    dnf: name=dnsmasq state=latest
+
+  - name: Lab | Modify dnsmasq service
+    ini_file:
+      path: /usr/lib/systemd/system/dnsmasq.service
+      section: "{{ item.section }}"
+      option:  "{{ item.option }}"
+      value:   "{{ item.value }}"
+    with_items:
+    - { section: Service, option: RestartSec, value: "30" }
+    - { section: Service, option: StartLimitIntervaliSec, value: "0" }
+    - { section: Service, option: Restar, value: "always" }
+
+  - name: Lab | Start dnsmasq
+    systemd:
+      name: dnsmasq
+      daemon_reload: yes
+      enabled: true
+      state: started
+  tags:
+  - dnsmasq

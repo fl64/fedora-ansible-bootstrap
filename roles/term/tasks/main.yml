@@ -1,5 +1,5 @@
 - name: Terminal | tilix settings
-  shell: | 
+  shell: |
     dconf load /com/gexperts/Tilix/ << EOF
     [/]
     prompt-on-close=true
