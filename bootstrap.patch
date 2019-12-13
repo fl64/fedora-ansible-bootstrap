@@ -1,0 +1,121 @@
+diff --git a/roles/look_and_feel/tasks/fonts.yml b/roles/look_and_feel/tasks/fonts.yml
+index 4b45a52..fc69a5c 100644
+--- a/roles/look_and_feel/tasks/fonts.yml
++++ b/roles/look_and_feel/tasks/fonts.yml
+@@ -9,9 +9,9 @@
+   become: false
+   block:
+   - debug: msg={{ nerd_fonts }}
+-  - name: Look_and_feel | Create font dirs in "/home/{{ lookup('env','USER') }}/.local/share/fonts/"
++  - name: Look_and_feel | Create font dirs in "{{ lookup('env','HOME') }}/.local/share/fonts/"
+     file:
+-      path: "/home/{{ lookup('env','USER') }}/.local/share/fonts/{{ item.font }}"
++      path: "{{ lookup('env','HOME') }}/.local/share/fonts/{{ item.font }}"
+       state: directory
+     with_items: "{{nerd_fonts}}"
+     notify:
+@@ -35,9 +35,9 @@
+ - name: Look_and_feel | install Cascadia font
+   become: false
+   block:
+-  - name: Look_and_feel | Create font dirs in "/home/{{ lookup('env','USER') }}/.local/share/fonts/"
++  - name: Look_and_feel | Create font dirs in "{{ lookup('env','HOME') }}/.local/share/fonts/"
+     get_url:
+       url: https://github.com/microsoft/cascadia-code/releases/download/v1909.16/Cascadia.ttf
+-      dest: "/home/{{ lookup('env','USER') }}/.local/share/fonts/"
++      dest: "{{ lookup('env','HOME') }}/.local/share/fonts/"
+     notify:
+     - reload font cache
+diff --git a/roles/look_and_feel/tasks/gnome.yml b/roles/look_and_feel/tasks/gnome.yml
+index c86f8f4..887b333 100644
+--- a/roles/look_and_feel/tasks/gnome.yml
++++ b/roles/look_and_feel/tasks/gnome.yml
+@@ -36,7 +36,7 @@
+ #       executable: pip3
+ 
+   - name: Look_and_feel | Read currently available keyboard layouts in Gnome
+-    become: true
++    become: false 
+     dconf:
+       key: "{{ item.key }}"
+       state: present
+@@ -100,11 +100,13 @@
+   # [WARNING]: The value [['xkb', 'ru'], ['xkb', 'us']] (type list) in a string field was converted to "[['xkb', 'ru'], ['xkb', 'us']]" (type string). If this does not look like what you expect, quote the
+   # entire value to ensure it does not change.
+   - name: Look_and_feel | Set mru-sources
++    become: false
+     dconf:
+       key: "/org/gnome/desktop/input-sources/mru-sources"
+       state: present
+       value: "[('xkb', 'ru'), ('xkb', 'us')]"
+   - name: Look_and_feel | Set sources
++    become: false
+     dconf:
+       key: "/org/gnome/desktop/input-sources/sources"
+       state: present
+diff --git a/roles/term/tasks/main.yml b/roles/term/tasks/main.yml
+index 0edb043..63491d8 100644
+--- a/roles/term/tasks/main.yml
++++ b/roles/term/tasks/main.yml
+@@ -1,34 +1,35 @@
+-#- name: Terminal | tilix settings
+-#  shell: |
+-#    dconf load /com/gexperts/Tilix/ << EOF
+-#    [/]
+-#    prompt-on-close=true
+-#    quake-specific-monitor=0
+-#    theme-variant='dark'
+-#
+-#    [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+-#    background-color='#283033'
+-#    badge-color='#AC7EA8'
+-#    badge-color-set=false
+-#    bold-color-set=false
+-#    cursor-background-color='#A1B0B8'
+-#    cursor-colors-set=false
+-#    cursor-foreground-color='#BDC3C7'
+-#    font='FuraCode Nerd Font weight=453 10'
+-#    foreground-color='#CDCDCD'
+-#    highlight-colors-set=false
+-#    palette=['#000000', '#A60001', '#00BB00', '#FECD22', '#3A9BDB', '#BB00BB', '#00BBBB', '#BBBBBB', '#555555', '#FF0003', '#93C863', '#FEF874', '#A1D7FF', '#FF55FF', '#55FFFF', '#FFFFFF']
+-#    use-system-font=false
+-#    use-theme-colors=false
+-#    visible-name='Default'
+-#    EOF
+-#  tags: terminal
++- name: Terminal | tilix settings
++  become: false
++  shell: |
++    dconf load /com/gexperts/Tilix/ << EOF
++    [/]
++    prompt-on-close=true
++    quake-specific-monitor=0
++    theme-variant='dark'
++
++    [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
++    background-color='#283033'
++    badge-color='#AC7EA8'
++    badge-color-set=false
++    bold-color-set=false
++    cursor-background-color='#A1B0B8'
++    cursor-colors-set=false
++    cursor-foreground-color='#BDC3C7'
++    font='FuraCode Nerd Font weight=453 10'
++    foreground-color='#CDCDCD'
++    highlight-colors-set=false
++    palette=['#000000', '#A60001', '#00BB00', '#FECD22', '#3A9BDB', '#BB00BB', '#00BBBB', '#BBBBBB', '#555555', '#FF0003', '#93C863', '#FEF874', '#A1D7FF', '#FF55FF', '#55FFFF', '#FFFFFF']
++    use-system-font=false
++    use-theme-colors=false
++    visible-name='Default'
++    EOF
++  tags: terminal
+ 
+ 
+ - name: Terminal | Read currently available keyboard layouts in Gnome
++  become: false
+   vars:
+     tilix_dconf_path: "/com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d"
+-  become: true
+   dconf:
+     key: "{{ item.key }}"
+     state: present

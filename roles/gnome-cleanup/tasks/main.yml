@@ -23,3 +23,11 @@
   - tracker-store
   tags:
   - gnome-cleanup
+
+- name: gnome-cleanup | Disable speech-dispatcher
+  lineinfile:
+    path: /etc/speech-dispatcher/speechd.conf
+    regexp: '^#.*DisableAutoSpawn'
+    line: DisableAutoSpawn
+  tags:
+    - gnome-cleanup

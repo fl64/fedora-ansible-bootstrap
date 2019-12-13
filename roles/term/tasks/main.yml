@@ -1,4 +1,5 @@
 - name: Terminal | tilix settings
+  become: false
   shell: |
     dconf load /com/gexperts/Tilix/ << EOF
     [/]
@@ -23,3 +24,4 @@
     visible-name='Default'
     EOF
   tags: terminal
+

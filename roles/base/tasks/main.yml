@@ -68,7 +68,7 @@
         set number
         syntax on
         set hlsearch
-      dest: "/home/{{ lookup('env','USER') }}/.vimrc"
+      dest: "{{ lookup('env','HOME') }}/.vimrc"
   tags:
   - base
   - vim

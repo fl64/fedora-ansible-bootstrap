@@ -9,9 +9,9 @@
   become: false
   block:
   - debug: msg={{ nerd_fonts }}
-  - name: Look_and_feel | Create font dirs in "/home/{{ lookup('env','USER') }}/.local/share/fonts/"
+  - name: Look_and_feel | Create font dirs in "{{ lookup('env','HOME') }}/.local/share/fonts/"
     file:
-      path: "/home/{{ lookup('env','USER') }}/.local/share/fonts/{{ item.font }}"
+      path: "{{ lookup('env','HOME') }}/.local/share/fonts/{{ item.font }}"
       state: directory
     with_items: "{{nerd_fonts}}"
     notify:
@@ -30,13 +30,14 @@
     - { font: "DroidSansMono", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/DroidSansMono.zip"}
     - { font: "FiraCode", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/FiraCode.zip"}
     - { font: "Inconsolata", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Inconsolata.zip"}
+    - { font: "FiraMono", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/FiraMono.zip"}
 
 - name: Look_and_feel | install Cascadia font
   become: false
   block:
-  - name: Look_and_feel | Create font dirs in "/home/{{ lookup('env','USER') }}/.local/share/fonts/"
+  - name: Look_and_feel | Create font dirs in "{{ lookup('env','HOME') }}/.local/share/fonts/"
     get_url:
       url: https://github.com/microsoft/cascadia-code/releases/download/v1909.16/Cascadia.ttf
-      dest: "/home/{{ lookup('env','USER') }}/.local/share/fonts/"
+      dest: "{{ lookup('env','HOME') }}/.local/share/fonts/"
     notify:
     - reload font cache

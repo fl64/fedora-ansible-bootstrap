@@ -21,16 +21,22 @@
     notify:
     - reload gnome-shell
 
-- name: Look_and_feel | dconf
-  become: false
-  block:
-  - name: Look_and_feel | install python package
-    pip:
-      name: psutil
-      extra_args: --user
-      executable: pip3
+  - name: Look_and_feel | psutil
+    dnf:
+      name: python3-psutil
+      state: latest
+
+# - name: Look_and_feel | dconf
+#   become: false
+#   block:
+#   - name: Look_and_feel | install python package
+#     pip:
+#       name: psutil
+#       extra_args: --user
+#       executable: pip3
 
   - name: Look_and_feel | Read currently available keyboard layouts in Gnome
+    become: false 
     dconf:
       key: "{{ item.key }}"
       state: present
@@ -54,7 +60,8 @@
     - { key: "/org/gnome/nautilus/list-view/default-zoom-level", value: "'small'"}
     - { key: "/org/gnome/nautilus/preferences/default-folder-viewer", value: "'list-view'"}
     - { key: "/org/gnome/nautilus/preferences/default-sort-order", value: "'type'"}
-    
+
+
     # Dialog box
     - { key: "/org/gtk/Settings/FileChooser/sort-directories-first", value: "'true'"}
 
@@ -65,6 +72,8 @@
 
     - { key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled", value: "true"}
 
+    # Dash to docker_volume
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/transparency-mode", value: "'FIXED'"}
     - { key: "/org/gnome/shell/extensions/dash-to-dock/apply-custom-theme", value: "false"}
     - { key: "/org/gnome/shell/extensions/dash-to-dock/background-opacity", value: "0.0"}
     - { key: "/org/gnome/shell/extensions/dash-to-dock/dock-position", value: "'BOTTOM'"}
@@ -91,11 +100,13 @@
   # [WARNING]: The value [['xkb', 'ru'], ['xkb', 'us']] (type list) in a string field was converted to "[['xkb', 'ru'], ['xkb', 'us']]" (type string). If this does not look like what you expect, quote the
   # entire value to ensure it does not change.
   - name: Look_and_feel | Set mru-sources
+    become: false
     dconf:
       key: "/org/gnome/desktop/input-sources/mru-sources"
       state: present
       value: "[('xkb', 'ru'), ('xkb', 'us')]"
   - name: Look_and_feel | Set sources
+    become: false
     dconf:
       key: "/org/gnome/desktop/input-sources/sources"
       state: present
