@@ -19,45 +19,48 @@
       state: latest
   - name: VSCode | install exts
     become: false
-    shell: |
-      code --install-extension alefragnani.project-manager --force
-      code --install-extension azemoh.one-monokai --force
-      code --install-extension bbenoist.vagrant --force
-      code --install-extension bierner.markdown-preview-github-styles --force
-      code --install-extension codezombiech.gitignore --force
-      code --install-extension Compilenix.vscode-zonefile --force
-      code --install-extension dhoeric.ansible-vault --force
-      code --install-extension donjayamanne.git-extension-pack --force
-      code --install-extension donjayamanne.githistory --force
-      code --install-extension eamodio.gitlens --force
-      code --install-extension emmanuelbeziat.vscode-great-icons --force
-      code --install-extension eriklynd.json-tools --force
-      code --install-extension exiasr.hadolint --force
-      code --install-extension hangxingliu.vscode-nginx-conf-hint --force
-      code --install-extension Kelvin.vscode-sshfs --force
-      code --install-extension kenhowardpdx.vscode-gist --force
-      code --install-extension mauve.terraform --force
-      code --install-extension mikestead.dotenv --force
-      code --install-extension mindginative.terraform-snippets --force
-      code --install-extension mkxml.vscode-filesize --force
-      code --install-extension monokai.theme-monokai-pro-vscode --force
-      code --install-extension ms-azuretools.vscode-docker --force
-      code --install-extension ms-python.python --force
-      code --install-extension ms-vscode.Go --force
-      code --install-extension ms-vscode.powershell --force
-      code --install-extension ms-vscode.sublime-keybindings --force
-      code --install-extension PKief.material-icon-theme --force
-      code --install-extension richie5um2.vscode-sort-json --force
-      code --install-extension rupisaini.vscode-ansible-linter --force
-      code --install-extension samuelcolvin.jinjahtml --force
-      code --install-extension Shan.code-settings-sync --force
-      code --install-extension shanoor.vscode-nginx --force
-      code --install-extension shardulm94.trailing-spaces --force
-      code --install-extension vscode-icons-team.vscode-icons --force
-      code --install-extension vscoss.vscode-ansible --force
-      code --install-extension windmilleng.vscode-go-autotest --force
-      code --install-extension ziyasal.vscode-open-in-github --force
-      code --install-extension WakaTime.vscode-wakatime --force
+    shell: code --install-extension {{ item }} --force
+    with_items:
+    -  alefragnani.project-manager
+    -  bbenoist.vagrant
+    -  bierner.markdown-preview-github-styles
+    -  codezombiech.gitignore
+    -  Compilenix.vscode-zonefile
+    -  dhoeric.ansible-vault
+    -  donjayamanne.git-extension-pack
+    -  donjayamanne.githistory
+    -  eamodio.gitlens
+    -  emmanuelbeziat.vscode-great-icons
+    -  eriklynd.json-tools
+    -  exiasr.hadolint
+    -  hangxingliu.vscode-nginx-conf-hint
+    -  ipedrazas.kubernetes-snippets
+    -  Kelvin.vscode-sshfs
+    -  kenhowardpdx.vscode-gist
+    -  mauve.terraform
+    -  mikestead.dotenv
+    -  mindginative.terraform-snippets
+    -  mkxml.vscode-filesize
+    -  monokai.theme-monokai-pro-vscode
+    -  ms-azuretools.vscode-docker
+    -  ms-kubernetes-tools.vscode-kubernetes-tools
+    -  ms-python.python
+    -  ms-vscode.Go
+    -  ms-vscode.powershell
+    -  ms-vscode.sublime-keybindings
+    -  PKief.material-icon-theme
+    -  redhat.vscode-yaml
+    -  richie5um2.vscode-sort-json
+    -  rupisaini.vscode-ansible-linter
+    -  samuelcolvin.jinjahtml
+    -  Shan.code-settings-sync
+    -  shanoor.vscode-nginx
+    -  shardulm94.trailing-spaces
+    -  vscode-icons-team.vscode-icons
+    -  vscoss.vscode-ansible
+    -  WakaTime.vscode-wakatime
+    -  windmilleng.vscode-go-autotest
+    -  ziyasal.vscode-open-in-github
   tags:
   - vs
   - vscode
