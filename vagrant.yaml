@@ -32,9 +32,9 @@
     tags: [syncthing]
   - role: k8s
     vars:
-      kubespy_ver: v0.4.0
-      kind_ver: v0.5.1
-      k9s_ver: 0.7.11
+      kubespy_ver: v0.5.1
+      kind_ver: v0.8.1
+      k9s_ver: 0.19.7
       kubectldebug_ver: 0.1.1
       helm_ver: v2.14.3
     tags: [k8s]
@@ -46,7 +46,7 @@
     tags: [subl]
   - role: docker
     vars:
-      docker_compose_version: 1.24.1
+      docker_compose_version: 1.25.5
     tags: [docker]
   - role: insync
     vars:
@@ -64,9 +64,9 @@
     tags: [term, terminal]
   - role: devops-tools
     vars:
-      terraform_ver: 0.12.13
-      packer_ver: 1.4.4
-      vagrant_ver: 2.2.6
+      terraform_ver: 0.12.20
+      packer_ver: 1.5.6
+      vagrant_ver: 2.2.9
     tags: [devops]
   - role: sysctl
     tags: [sysctl]
@@ -75,7 +75,7 @@
   - role: pycharm
     vars:
       pycharm_version: 2019.1.3
-    tags: [pycharm]
+    tags: [pycharm,never]
   - role: crypt
     tags: [crypt]
   - role: other
@@ -85,6 +85,6 @@
   - role: lab
     tags: [lab]
   - role: goland
-    tags: [goland]
+    tags: [goland,never]
     vars:
-      goland_version: 2019.3
+      goland_version: 2020.1.2

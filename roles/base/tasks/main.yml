@@ -18,7 +18,11 @@
       - inotify-tools
       - fuse-exfat
       - timeshift
-      state: present
+      - exa
+      - lsd
+      - autojump
+      - autojump-zsh
+      state: latest
   tags:
   - base
 

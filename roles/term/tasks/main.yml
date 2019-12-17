@@ -1,3 +1,8 @@
+- name: Base | install sysutils
+  dnf:
+    name:
+    - tilix
+    state: latest
 - name: Terminal | tilix settings
   become: false
   shell: |
@@ -24,4 +29,3 @@
     visible-name='Default'
     EOF
   tags: terminal
-

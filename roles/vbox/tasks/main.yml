@@ -24,7 +24,7 @@
     - name: VBox | install packets
       dnf:
         name:
-        - VirtualBox-6.0
+        - VirtualBox-{{ vbox_version }}
         state: latest
     - name: VBox | Adding user to group
       user:

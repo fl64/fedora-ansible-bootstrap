@@ -4,7 +4,7 @@
     - mozilla-fira-*
     - google-noto-sans-fonts
     state: present
-
+  tags: [fonts]
 - name: Look_and_feel | install Nerd fonts
   become: false
   block:
@@ -25,12 +25,14 @@
     with_items: "{{nerd_fonts}}"
     notify:
     - reload font cache
+  tags: [fonts]
   vars:
     nerd_fonts:
     - { font: "DroidSansMono", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/DroidSansMono.zip"}
     - { font: "FiraCode", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/FiraCode.zip"}
     - { font: "Inconsolata", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Inconsolata.zip"}
     - { font: "FiraMono", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/FiraMono.zip"}
+    - { font: "JetBrainsMono", link: "https://download.jetbrains.com/fonts/JetBrainsMono-1.0.0.zip"}
 
 - name: Look_and_feel | install Cascadia font
   become: false
@@ -41,3 +43,4 @@
       dest: "{{ lookup('env','HOME') }}/.local/share/fonts/"
     notify:
     - reload font cache
+  tags: [fonts]
