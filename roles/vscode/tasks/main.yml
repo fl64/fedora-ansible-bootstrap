@@ -35,13 +35,15 @@
     - eriklynd.json-tools
     - esbenp.prettier-vscode
     - exiasr.hadolint
-    - fatihacet.gitlab-workflow
+    - GitLab.gitlab-workflow
+    - ffaraone.opensslutils
+    - golang.Go
     - hangxingliu.vscode-nginx-conf-hint
     - ipedrazas.kubernetes-snippets
     - jlcs-es.x509-parser
     - Kelvin.vscode-sshfs
     - kenhowardpdx.vscode-gist
-    - mauve.terraform
+    - mindginative.terraform-snippets
     - mikestead.dotenv
     - mindginative.terraform-snippets
     - mkxml.vscode-filesize
@@ -49,7 +51,6 @@
     - ms-azuretools.vscode-docker
     - ms-kubernetes-tools.vscode-kubernetes-tools
     - ms-python.python
-    - ms-vscode.Go
     - ms-vscode.powershell
     - ms-vscode.sublime-keybindings
     - PKief.material-icon-theme
