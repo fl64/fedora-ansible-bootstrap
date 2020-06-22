@@ -5,6 +5,7 @@
     - gstreamer1-plugins-*
     - minidlna
     - flameshot
+    - peek
     - rawtherapee
     - inkscape
     - gimp
