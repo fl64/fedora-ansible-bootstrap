@@ -134,10 +134,11 @@ complete -o nospace -C /usr/local/bin/mc mc
 alias dcu="docker-compose up -d --build"
 alias dcd="docker-compose down"
 alias dcl="docker-compose logs"
-alias ls="lsd"
+alias ls="exa"
 alias vd="vagrant destroy"
 alias vdf="vagrant destroy -f"
 alias vu="vagrant up --provision"
 alias vs="vagrant ssh"
+alias tfp="terraform plan -no-color | grep -E '(^.*[#~+-] .*|^[[:punct:]]|Plan)'"
 
 ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt
