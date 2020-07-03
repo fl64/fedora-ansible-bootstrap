@@ -43,7 +43,7 @@
     tags: [subl]
   - role: docker
     vars:
-      docker_compose_version: 1.25.4
+      docker_compose_version: 1.26.1
     tags: [docker]
   - role: insync
     vars:

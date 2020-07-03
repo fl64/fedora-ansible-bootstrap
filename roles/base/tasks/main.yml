@@ -11,6 +11,7 @@
       - remmina
       - jq
       - asciinema
+      - peek
       - ntpdate
       - unrar
       - tigervnc-server

@@ -15,7 +15,5 @@
       name:
       - google-cloud-sdk
       state: latest
-    tags:
-    - k8s-kubectl
   tags:
   - gke
