@@ -41,7 +41,7 @@
 
 - name: K8s | install k9s
   unarchive:
-    src: https://github.com/derailed/k9s/releases/download/{{ k9s_ver }}/k9s_{{ k9s_ver }}_Linux_x86_64.tar.gz
+    src: https://github.com/derailed/k9s/releases/download/{{ k9s_ver }}/k9s_Linux_x86_64.tar.gz
     dest: /usr/local/bin
     remote_src: yes
     mode: 0755
@@ -73,7 +73,7 @@
 
 - name: install helm
   unarchive:
-    src: https://storage.googleapis.com/kubernetes-helm/helm-{{ helm_ver }}-linux-amd64.tar.gz
+    src: "https://get.helm.sh/helm-{{ helm_ver }}-linux-amd64.tar.gz" #https://storage.googleapis.com/kubernetes-helm/helm-{{ helm_ver }}-linux-amd64.tar.gz
     dest: /usr/local/bin
     remote_src: yes
     extra_opts:
