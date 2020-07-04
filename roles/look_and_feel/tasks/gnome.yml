@@ -16,6 +16,7 @@
       /usr/local/bin/gnomeshell-extension-manage --install --extension-id 120   --version latest   #system-monitor by Cerin
       /usr/local/bin/gnomeshell-extension-manage --install --extension-id 19    --version latest   #User Themes by fmuellner
       /usr/local/bin/gnomeshell-extension-manage --install --extension-id 1228  --version latest   #Arc menu
+      /usr/local/bin/gnomeshell-extension-manage --install --extension-id 989   --version latest   #Syncthing icon
     notify:
     - reload gnome-shell
 
