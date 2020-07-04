@@ -9,7 +9,6 @@
   - name: Look_and_feel | Install gnome exts
     become: false
     shell: |
-      #/usr/local/bin/gnomeshell-extension-manage --install --extension-id 6     --version latest   #Applications Menu by fmuellner
       /usr/local/bin/gnomeshell-extension-manage --install --extension-id 307   --version latest   #Dash to Dock by michele_g
       /usr/local/bin/gnomeshell-extension-manage --install --extension-id 615   --version latest   #KStatusNotifierItem/AppIndicator Support by 3v1n0
       /usr/local/bin/gnomeshell-extension-manage --install --extension-id 1357  --version latest   #Notes by Maestroschan
@@ -17,7 +16,6 @@
       /usr/local/bin/gnomeshell-extension-manage --install --extension-id 120   --version latest   #system-monitor by Cerin
       /usr/local/bin/gnomeshell-extension-manage --install --extension-id 19    --version latest   #User Themes by fmuellner
       /usr/local/bin/gnomeshell-extension-manage --install --extension-id 1228  --version latest   #Arc menu
-      #/usr/local/bin/gnomeshell-extension-manage --install --extension-id 690   --version latest   #Easy screencast
     notify:
     - reload gnome-shell
 
@@ -51,7 +49,7 @@
     - { key: "/org/gnome/shell/extensions/user-theme", value: "'Arc-Dark-solid'"}
 
     - { key: "/org/gnome/desktop/interface/cursor-theme", value: "'Paper'"}
-    - { key: "/org/gnome/desktop/interface/icon-theme", value: "'Paper'"}
+    - { key: "/org/gnome/desktop/interface/icon-theme", value: "'Papirus'"}
 
     - { key: "/org/gnome/nautilus/preferences/default-folder-viewer", value: "'list-view'"}
     - { key: "/org/gnome/nautilus/preferences/default-sort-order", value: "'type'"}

@@ -3,6 +3,7 @@
     name:
     - arc-theme
     - gnome-tweak-tool
+    - papirus-icon-theme
     state: present
   tags:
   - look_and_feel

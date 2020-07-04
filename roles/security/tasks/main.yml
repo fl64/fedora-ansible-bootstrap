@@ -17,7 +17,7 @@
     value:   "{{ item.value }}"
   with_items:
   - { section: commands, option: "upgrade_type", value: "security" }
-  - { section: commands, option: "apply_updates", value: "yes" }
+  - { section: commands, option: "apply_updates", value: "no" }
   tags:
   - security
   - sec

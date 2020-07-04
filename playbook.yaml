@@ -8,7 +8,8 @@
   roles:
   - role: rpm-fusion
     vars:
-      fedora_version: 31
+      fedora_version: 32
+    tags: [fusion]
   - role: base
     tags: [base]
   - role: gnome-cleanup
@@ -18,7 +19,7 @@
   - role: media
     tags: [media]
   - role: look_and_feel
-    tags: [look]
+    tags: [look,never]
   - role: internet
     tags: [internet]
   - role: inkdrop
@@ -51,7 +52,7 @@
     tags: [insync]
   - role: vbox
     vars:
-      fedora_version: 31
+      fedora_version: 32
       vbox_version: 6.1
     tags: [vbox]
   - role: zsh
@@ -78,8 +79,8 @@
     tags: [crypt]
   - role: other
     tags: [never,keychron]
-  - role: security
-    tags: [security,sec]
+  # - role: security
+  #   tags: [security,sec]
   - role: lab
     tags: [lab]
   # - role: goland

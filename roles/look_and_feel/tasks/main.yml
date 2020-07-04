@@ -1,5 +1,5 @@
-- name:
-  include_tasks: paper_icons.yml
+#- name:
+#  include_tasks: paper_icons.yml
 
 - name:
   include_tasks: themes.yml

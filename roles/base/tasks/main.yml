@@ -27,12 +27,12 @@
   tags:
   - base
 
-- name: Base | Install bat
-  shell: |
-    dnf module install bat -y
-  tags:
-  - base
-  - bat
+# - name: Base | Install bat
+#   shell: |
+#     dnf module install bat -y
+#   tags:
+#   - base
+#   - bat
 
 - name: Base | Install snapd
   block:
@@ -73,6 +73,8 @@
         set number
         syntax on
         set hlsearch
+        set et
+        set sw=2 ts=2 sts=2
       dest: "{{ lookup('env','HOME') }}/.vimrc"
   tags:
   - base
