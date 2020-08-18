@@ -8,7 +8,7 @@
     yum_repository:
       name: insync
       description: insync repo
-      baseurl: "http://yum.insynchq.com/fedora/{{ fedora_version_fallback }}/"
+      baseurl: "http://yum.insync.io/fedora/{{ fedora_version_fallback }}/"
       gpgkey: "https://d2t3ff60b2tol4.cloudfront.net/repomd.xml.key"
       gpgcheck: yes
       enabled: yes

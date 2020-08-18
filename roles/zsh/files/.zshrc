@@ -142,3 +142,4 @@ alias vs="vagrant ssh"
 alias tfp="terraform plan -no-color | grep -E '(^.*[#~+-] .*|^[[:punct:]]|Plan)'"
 
 ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt
+function ssh () {/usr/bin/ssh -t $@ "tmux attach || tmux new";}

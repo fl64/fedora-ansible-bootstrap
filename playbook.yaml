@@ -48,7 +48,7 @@
     tags: [docker]
   - role: insync
     vars:
-      fedora_version_fallback: 29
+      fedora_version_fallback: 32
     tags: [insync]
   - role: vbox
     vars:
@@ -65,7 +65,7 @@
     vars:
       terraform_ver: 0.12.20
       packer_ver: 1.6.0
-      vagrant_ver: 2.2.7
+      vagrant_ver: 2.2.9
     tags: [devops]
   - role: sysctl
     tags: [sysctl]
@@ -79,10 +79,14 @@
     tags: [crypt]
   - role: other
     tags: [never,keychron]
-  # - role: security
-  #   tags: [security,sec]
+  - role: security
+    tags: [security,sec]
   - role: lab
     tags: [lab]
+  - role: obsidian
+    tags: [obsidian]
+    vars:
+      obsidian_ver: 0.8.0
   # - role: goland
   #   tags: [goland]
   #   vars:

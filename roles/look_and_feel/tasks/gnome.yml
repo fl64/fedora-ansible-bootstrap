@@ -35,7 +35,7 @@
 #       executable: pip3
 
   - name: Look_and_feel | Read currently available keyboard layouts in Gnome
-    become: false 
+    become: false
     dconf:
       key: "{{ item.key }}"
       state: present

@@ -1,0 +1,5 @@
+- name: obsidian | Install obsidian
+  get_url:
+    url: "https://github.com/obsidianmd/obsidian-releases/releases/download/v{{ obsidian_ver }}/Obsidian-{{ obsidian_ver }}.AppImage"
+    dest: "/usr/local/bin/obsidian"
+    mode: 0755
