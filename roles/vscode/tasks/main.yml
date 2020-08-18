@@ -17,57 +17,60 @@
       name:
       - code
       state: latest
-  - name: VSCode | install exts
-    become: false
-    shell: code --install-extension {{ item }} --force
-    with_items:
-    #- alefragnani.project-manager
-    - azemoh.one-monokai
-    - bbenoist.vagrant
-    - bierner.markdown-preview-github-styles
-    - codezombiech.gitignore
-    - Compilenix.vscode-zonefile
-    - dhoeric.ansible-vault
-    - donjayamanne.git-extension-pack
-    - donjayamanne.githistory
-    - eamodio.gitlens
-    - emmanuelbeziat.vscode-great-icons
-    - eriklynd.json-tools
-    - esbenp.prettier-vscode
-    - exiasr.hadolint
-    - GitLab.gitlab-workflow
-    - ffaraone.opensslutils
-    - golang.Go
-    - hangxingliu.vscode-nginx-conf-hint
-    - ipedrazas.kubernetes-snippets
-    - jlcs-es.x509-parser
-    - Kelvin.vscode-sshfs
-    - kenhowardpdx.vscode-gist
-    - mindginative.terraform-snippets
-    - mikestead.dotenv
-    - mindginative.terraform-snippets
-    - mkxml.vscode-filesize
-    - monokai.theme-monokai-pro-vscode
-    - ms-azuretools.vscode-docker
-    - ms-kubernetes-tools.vscode-kubernetes-tools
-    - ms-python.python
-    - ms-vscode.powershell
-    - ms-vscode.sublime-keybindings
-    - PKief.material-icon-theme
-    - redhat.vscode-yaml
-    - richie5um2.vscode-sort-json
-    - rupisaini.vscode-ansible-linter
-    - samuelcolvin.jinjahtml
-    - Shan.code-settings-sync
-    - shanoor.vscode-nginx
-    - shardulm94.trailing-spaces
-    - TqrHsn.vscode-docker-registry-explorer
-    - vscode-icons-team.vscode-icons
-    - vscoss.vscode-ansible
-    - vsls-contrib.gistfs
-    - WakaTime.vscode-wakatime
-    - windmilleng.vscode-go-autotest
-    - ziyasal.vscode-open-in-github
-  tags:
-  - vs
-  - vscode
+
+  # all setting synced via internal VScode sync
+
+  # - name: VSCode | install exts
+  #   become: false
+  #   shell: code --install-extension {{ item }} --force
+  #   with_items:
+  #   #- alefragnani.project-manager
+  #   - azemoh.one-monokai
+  #   - bbenoist.vagrant
+  #   - bierner.markdown-preview-github-styles
+  #   - codezombiech.gitignore
+  #   - Compilenix.vscode-zonefile
+  #   - dhoeric.ansible-vault
+  #   - donjayamanne.git-extension-pack
+  #   - donjayamanne.githistory
+  #   - eamodio.gitlens
+  #   - emmanuelbeziat.vscode-great-icons
+  #   - eriklynd.json-tools
+  #   - esbenp.prettier-vscode
+  #   - exiasr.hadolint
+  #   - GitLab.gitlab-workflow
+  #   - ffaraone.opensslutils
+  #   - golang.Go
+  #   - hangxingliu.vscode-nginx-conf-hint
+  #   - ipedrazas.kubernetes-snippets
+  #   - jlcs-es.x509-parser
+  #   - Kelvin.vscode-sshfs
+  #   - kenhowardpdx.vscode-gist
+  #   - mindginative.terraform-snippets
+  #   - mikestead.dotenv
+  #   - mindginative.terraform-snippets
+  #   - mkxml.vscode-filesize
+  #   - monokai.theme-monokai-pro-vscode
+  #   - ms-azuretools.vscode-docker
+  #   - ms-kubernetes-tools.vscode-kubernetes-tools
+  #   - ms-python.python
+  #   - ms-vscode.powershell
+  #   - ms-vscode.sublime-keybindings
+  #   - PKief.material-icon-theme
+  #   - redhat.vscode-yaml
+  #   - richie5um2.vscode-sort-json
+  #   - rupisaini.vscode-ansible-linter
+  #   - samuelcolvin.jinjahtml
+  #   - Shan.code-settings-sync
+  #   - shanoor.vscode-nginx
+  #   - shardulm94.trailing-spaces
+  #   - TqrHsn.vscode-docker-registry-explorer
+  #   - vscode-icons-team.vscode-icons
+  #   - vscoss.vscode-ansible
+  #   - vsls-contrib.gistfs
+  #   - WakaTime.vscode-wakatime
+  #   - windmilleng.vscode-go-autotest
+  #   - ziyasal.vscode-open-in-github
+  # tags:
+  # - vs
+  # - vscode
