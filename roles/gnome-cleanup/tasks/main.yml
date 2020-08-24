@@ -21,6 +21,14 @@
   - tracker-miner-apps
   - tracker-miner-fs
   - tracker-store
+  - tracker-miner-rss
+  - tracker-extract
+  - tracker-writeback
+  tags:
+  - gnome-cleanup
+
+- name: reset tracker
+  shell: yes | tracker reset --hard
   tags:
   - gnome-cleanup
 
