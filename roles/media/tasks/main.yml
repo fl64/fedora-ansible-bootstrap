@@ -29,7 +29,6 @@
   tags:
   - media
 
-
 - name: Media | audacious winamp skin
   copy:
     src: "{{ item }}"
