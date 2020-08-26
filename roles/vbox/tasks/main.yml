@@ -9,10 +9,12 @@
         - elfutils-libelf-devel
         - qt5-qtx11extras
         state: present
+
     - name: VBox | Add gpg key
       rpm_key:
         state: present
         key: "https://www.virtualbox.org/download/oracle_vbox.asc"
+
     - name: VBox | Add repo
       yum_repository:
         name: virtualbox
@@ -21,11 +23,13 @@
         gpgkey: "https://www.virtualbox.org/download/oracle_vbox.asc"
         gpgcheck: yes
         enabled: yes
+
     - name: VBox | install packets
       dnf:
         name:
         - VirtualBox-{{ vbox_version }}
         state: latest
+
     - name: VBox | Adding user to group
       user:
         name: "{{ lookup('env','USER') }}"
