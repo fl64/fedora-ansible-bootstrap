@@ -5,6 +5,7 @@
     - google-noto-sans-fonts
     state: present
   tags: [fonts]
+
 - name: Look_and_feel | install Nerd fonts
   become: false
   block:
@@ -21,7 +22,7 @@
       src: "{{ item.link }}"
       dest: "/home/{{ lookup('env','USER') }}/.local/share/fonts/{{ item.font }}"
       remote_src: yes
-      mode: 0644
+      #mode: 0644
     with_items: "{{nerd_fonts}}"
     notify:
     - reload font cache
@@ -33,6 +34,8 @@
     - { font: "Inconsolata", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Inconsolata.zip"}
     - { font: "FiraMono", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/FiraMono.zip"}
     - { font: "JetBrainsMono", link: "https://download.jetbrains.com/fonts/JetBrainsMono-1.0.0.zip"}
+    - { font: "Iosevka", link: "https://github.com/be5invis/Iosevka/releases/download/v3.4.6/ttf-iosevka-3.4.6.zip"}
+    - { font: "IosevkaTerm", link: "https://github.com/be5invis/Iosevka/releases/download/v3.4.6/ttf-iosevka-term-3.4.6.zip"}
 
 - name: Look_and_feel | install Cascadia font
   become: false
