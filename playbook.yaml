@@ -84,7 +84,7 @@
   - role: obsidian
     tags: [obsidian]
     vars:
-      obsidian_ver: 0.8.0
+      obsidian_ver: 0.8.4
   # - role: goland
   #   tags: [goland]
   #   vars:
