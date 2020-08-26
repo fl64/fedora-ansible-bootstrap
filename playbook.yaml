@@ -36,8 +36,8 @@
       kubectldebug_ver: 0.1.1
       helm_ver: v3.2.3
     tags: [k8s]
-  - role: gke
-    tags: [gke]
+  - role: googlecloud
+    tags: [googlecloud]
   - role: vscode
     tags: [vs]
   - role: sublime

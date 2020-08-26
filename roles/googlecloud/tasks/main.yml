@@ -1,7 +1,7 @@
 ---
-- name: gke | install google cloud SDK
+- name: googlecloud | install google cloud SDK
   block:
-  - name: gke | Install repo
+  - name: googlecloud | Install repo
     yum_repository:
       name: google-cloud-sdk
       description: Google Cloud SDK
@@ -10,10 +10,10 @@
       gpgcheck: yes
       enabled: yes
 
-  - name: gke | install google-cloud-sdk
+  - name: googlecloud | install google-cloud-sdk
     dnf:
       name:
       - google-cloud-sdk
       state: latest
   tags:
-  - gke
+  - googlecloud
