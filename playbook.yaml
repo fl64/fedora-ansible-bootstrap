@@ -42,10 +42,8 @@
     tags: [vs]
   - role: sublime
     tags: [subl]
-  - role: docker
-    vars:
-      docker_compose_version: 1.26.1
-    tags: [docker]
+  - role: podman
+    tags: [podman]
   - role: insync
     vars:
       fedora_version_fallback: 32
