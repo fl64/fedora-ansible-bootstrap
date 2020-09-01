@@ -23,6 +23,7 @@
       - lsd
       - autojump
       - autojump-zsh
+      - sysprof
       state: latest
   tags:
   - base
