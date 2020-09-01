@@ -3,7 +3,6 @@
     name:
     - nmap
     - scap-workbench
-    - dnf-automatic
     state: latest
   tags:
   - security
