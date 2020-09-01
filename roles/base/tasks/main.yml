@@ -28,29 +28,6 @@
   tags:
   - base
 
-# - name: Base | Install bat
-#   shell: |
-#     dnf module install bat -y
-#   tags:
-#   - base
-#   - bat
-
-- name: Base | Install snapd
-  block:
-  - name: Snapd | Install snapd
-    dnf:
-      name: snapd
-      state: latest
-  - name: Snapd | Create snap link
-    file:
-      src: /var/lib/snapd/snap
-      dest: /snap
-      state: link
-  tags:
-  - base
-  - snap
-  - snapd
-
 - name: Base | Install vim and plugins
   block:
   - name: Vim | Install vim and plugins
