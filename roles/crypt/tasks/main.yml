@@ -7,7 +7,6 @@
   tags:
   - crypt
 
-
 - name: Crypt | Install veracrypt
   block:
   - name: Crypt | add veracrypt copr
@@ -22,12 +21,3 @@
   tags:
   - crypt
   - veracrypt
-
-- name: Crypt | install encfs*
-  dnf:
-    name:
-    - encfs
-    state: latest
-  tags:
-  - crypt
-  - encfs
