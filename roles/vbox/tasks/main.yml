@@ -3,6 +3,14 @@
     - name: VBox | install packets
       dnf:
         name:
+        - binutils
+        - gcc
+        - make
+        - patch
+        - libgomp
+        - glibc-headers
+        - glibc-devel
+        - libxkbcommon
         - kernel-headers
         - kernel-devel
         - dkms
