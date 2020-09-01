@@ -1,7 +1,0 @@
-- name: Inkdrop | Install inkdrop
-  dnf:
-    name: https://api.inkdrop.app/download/linux/rpm
-    state: latest
-    validate_certs: no
-  tags:
-  - inkdrop
