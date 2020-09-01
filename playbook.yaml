@@ -62,8 +62,8 @@
   - role: devops-tools
     vars:
       terraform_ver: 0.12.20
-      packer_ver: 1.6.0
-      vagrant_ver: 2.2.9
+      packer_ver: 1.6.2
+      vagrant_ver: 2.2.10
     tags: [devops]
   - role: sysctl
     tags: [sysctl]
