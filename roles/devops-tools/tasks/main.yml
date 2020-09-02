@@ -1,59 +1,15 @@
-- name: DevOps | install terraform
-  unarchive:
-    src: https://releases.hashicorp.com/terraform/{{ terraform_ver }}/terraform_{{ terraform_ver }}_linux_amd64.zip
-    dest: /usr/local/bin
-    remote_src: yes
-    mode: 0755
-  tags:
-  - devops
-  - terrafrom
 
-- name: DevOps | install packer
-  unarchive:
-    src: https://releases.hashicorp.com/packer/{{ packer_ver }}/packer_{{ packer_ver }}_linux_amd64.zip
-    dest: /usr/local/bin
-    remote_src: yes
-    mode: 0755
-  tags:
-  - packer
-  - devops
+- name:
+  include: other.yml
 
-- name: DevOps | install packer
-  unarchive:
-    src: https://releases.hashicorp.com/vagrant/{{ vagrant_ver }}/vagrant_{{ vagrant_ver }}_linux_amd64.zip
-    dest: /usr/local/bin
-    remote_src: yes
-    mode: 0755
-  tags:
-  - vagant
-  - devops
+- name:
+  include: hashicorp.yml
+  tags: [hashicorp]
 
-- name: DevOps | install minio client
-  get_url:
-    url:  https://dl.minio.io/client/mc/release/linux-amd64/mc
-    dest: /usr/local/bin/mc
-    mode: 0755
-  tags:
-  - minio
-  - devops
+- name:
+  include: k8s.yml
+  tags: [k8s]
 
-- name: DevOps | install lazydocker
-  shell: |
-    curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-  tags:
-  - lazydocker
-  - devops
-
-- name: DevOps | Install jsonnet
-  block:
-  - name: DevOps | add jsonnet copr
-    shell: dnf copr enable randomvariable/jsonnet -y
-    args:
-      creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:randomvariable:jsonnet.repo
-  - name: DevOps | Install jsonnet
-    dnf:
-      name: jsonnet
-      state: latest
-  tags:
-  - jsonnet
-  - devops
+- name:
+  include: podman.yml
+  tags: [podman]

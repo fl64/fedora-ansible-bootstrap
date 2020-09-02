@@ -6,34 +6,11 @@
     - python3-virtualenv
     - git-secret
     state: latest
-  tags:
-  - dev
 
-- name: Dev | Gitkrtaken
-  dnf:
-    name:
-    - https://release.gitkraken.com/linux/gitkraken-amd64.rpm
-    state: present
-  tags:
-  - dev
+- name: CFSSL
+  include: cfssl.yml
+  tags: [cfssl]
 
-- name: Dev | install cfssl
-  vars:
-    cfssl_ver: 1.4.1
-    cfssl_url: https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_ver }}
-  get_url:
-    url: "{{ cfssl_url }}/{{ item.src }}"
-    dest: "/usr/local/bin/{{ item.dest }}"
-    mode: '0755'
-    force: true
-  with_items:
-  - { src: "cfssl-certinfo_{{ cfssl_ver }}_linux_amd64", dest: "cfssl-certinfo"}
-  - { src: "cfssl-bundle_{{ cfssl_ver }}_linux_amd64", dest: "cfssl-bundle"}
-  - { src: "cfssl-newkey_{{ cfssl_ver }}_linux_amd64", dest: "cfssl-newkey"}
-  - { src: "cfssljson_{{ cfssl_ver }}_linux_amd64", dest: "cfssljson"}
-  - { src: "cfssl_{{ cfssl_ver }}_linux_amd64", dest: "cfssl"}
-  - { src: "mkbundle_{{ cfssl_ver }}_linux_amd64", dest: "mkbundle"}
-  - { src: "multirootca_{{ cfssl_ver }}_linux_amd64", dest: "multirootca"}
-  tags:
-  - dev
-  - cfssl
+- name: Dev | git config
+  include: git.yml
+  tags: [git]

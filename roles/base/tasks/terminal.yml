@@ -1,8 +1,10 @@
-- name: Base | install sysutils
+
+
+- name: Terminal | install sysutils
   dnf:
-    name:
-    - tilix
+    name: tilix
     state: latest
+
 - name: Terminal | tilix settings
   become: false
   shell: |
@@ -28,4 +30,13 @@
     use-theme-colors=false
     visible-name='Default'
     EOF
-  tags: terminal
+
+- name: Terminal | install direnv
+  vars:
+    direnv_ver: 2.22.0
+    direnv_url: https://github.com/direnv/direnv/releases/download/v{{ direnv_ver }}/direnv.linux-amd64
+  get_url:
+    url: "{{ direnv_url }}"
+    dest: "/usr/local/bin/direnv"
+    mode: '0755'
+    force: true

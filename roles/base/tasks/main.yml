@@ -1,59 +1,18 @@
-- name: Base | Install packets
-  block:
-  - name: Base | install sysutils
-    dnf:
-      name:
-      - htop
-      - iotop
-      - nmap
-      - fzf
-      - tilix
-      - remmina
-      - jq
-      - asciinema
-      - peek
-      - ntpdate
-      - unrar
-      - tigervnc-server
-      - tmate #remote ssh share
-      - inotify-tools
-      - fuse-exfat
-      - timeshift
-      - exa
-      - lsd
-      - autojump
-      - autojump-zsh
-      - sysprof
-      state: latest
-  tags:
-  - base
+- name:
+  include: base.yml
 
-- name: Base | Install vim and plugins
-  block:
-  - name: Vim | Install vim and plugins
-    dnf:
-      name:
-      - vim
-      - vim-syntastic-go
-      - vim-syntastic-rst
-      - vim-syntastic-xml
-      - vim-syntastic-zsh
-      - vim-syntastic-text
-      - vim-syntastic-yaml
-      - vim-syntastic-ansible
-      - vim-syntastic-python
-      - vim-syntastic-json
-      state: latest
-  - name: Vim | Vim config
-    copy:
-      content: |
-        colorscheme industry
-        set number
-        syntax on
-        set hlsearch
-        set et
-        set sw=2 ts=2 sts=2
-      dest: "{{ lookup('env','HOME') }}/.vimrc"
-  tags:
-  - base
-  - vim
+- name:
+  include: media.yml
+
+- name:
+  include: networking.yml
+
+- name:
+  include: vim.yml
+
+- name:
+  include: internet.yml
+
+- name:
+  include: terminal.yml
+  tags: [terminal]

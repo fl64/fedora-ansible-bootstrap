@@ -1,0 +1,25 @@
+
+- name: Network | install packets
+  dnf:
+    name:
+    - wireshark
+    - wireshark-cli
+    state: latest
+
+- name: Network | Adding user to group
+  user:
+    name: "{{ lookup('env','USER') }}"
+    groups: wireshark
+    append: yes
+
+- name: Network | Install network utils
+  dnf:
+    name:
+    - iftop
+    - ifstat
+    - macchanger
+    - bind-utils
+    - iperf
+    - ethtool
+    - nmap
+    state: latest

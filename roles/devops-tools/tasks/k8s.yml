@@ -16,18 +16,12 @@
       state: latest
     tags:
     - k8s-kubectl
-  tags:
-  - k8s
-  - kubectl
 
 - name: K8s | Install kind
   get_url:
     url: https://github.com/kubernetes-sigs/kind/releases/download/{{ kind_ver }}/kind-linux-amd64
     dest: "/usr/local/bin/kind"
     mode: 0755
-  tags:
-  - k8s
-  - kind
 
 - name: K8s | Install minkube
   get_url:
@@ -35,9 +29,6 @@
     force: true
     dest: "/usr/local/bin/minikube"
     mode: 0755
-  tags:
-  - k8s
-  - minikube
 
 - name: K8s | install k9s
   unarchive:
@@ -45,9 +36,6 @@
     dest: /usr/local/bin
     remote_src: yes
     mode: 0755
-  tags:
-  - k8s
-  - k9s
 
 - name: K8s | install kubespy
   unarchive:
@@ -57,9 +45,6 @@
     - --strip-components=2
     remote_src: yes
     mode: 0755
-  tags:
-  - k8s
-  - kubespy
 
 - name: K8s | install kubectl debug
   unarchive:
@@ -67,9 +52,6 @@
     dest: /usr/local/bin
     remote_src: yes
     mode: 0755
-  tags:
-  - k8s
-  - kubectldebug
 
 - name: install helm
   unarchive:
@@ -80,6 +62,3 @@
       - --strip-components=1
       - linux-amd64/helm
     #creates: /usr/local/bin/helm
-  tags:
-  - k8s
-  - helm

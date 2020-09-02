@@ -74,6 +74,7 @@ plugins=(
     ansible
     dnf
     docker
+    direnv
     docker-compose
     helm
     nmap

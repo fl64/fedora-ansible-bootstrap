@@ -12,38 +12,16 @@
     tags: [fusion]
   - role: base
     tags: [base]
-  - role: gnome-cleanup
-    tags: [gnome-cleanup]
   - role: dev
     tags: [dev]
-  - role: media
-    tags: [media]
   - role: look_and_feel
     tags: [look,never]
-  - role: internet
-    tags: [internet]
-  - role: inkdrop
-    tags: [inkdrop]
-  - role: network-tools
-    tags: [net]
   - role: syncthing
     tags: [syncthing]
-  - role: k8s
-    vars:
-      kubespy_ver: v0.5.1
-      kind_ver: v0.8.1
-      k9s_ver: v0.21.1
-      kubectldebug_ver: 0.1.1
-      helm_ver: v3.2.3
-    tags: [k8s]
-  - role: googlecloud
-    tags: [googlecloud]
   - role: vscode
     tags: [vs]
   - role: sublime
     tags: [subl]
-  - role: podman
-    tags: [podman]
   - role: insync
     vars:
       fedora_version_fallback: 32
@@ -57,35 +35,32 @@
     vars:
       wakatime: true
     tags: [zsh]
-  - role: term
-    tags: [term, terminal]
   - role: devops-tools
     vars:
       terraform_ver: 0.12.20
-      packer_ver: 1.6.2
-      vagrant_ver: 2.2.10
+      kubespy_ver: v0.5.1
+      kind_ver: v0.8.1
+      k9s_ver: v0.21.7
+      kubectldebug_ver: 0.1.1
+      helm_ver: v3.3.1
     tags: [devops]
   - role: sysctl
     tags: [sysctl]
   - role: iptables
     tags: [iptables]
-  # - role: pycharm
-  #   vars:
-  #     pycharm_version: 2019.1.3
-  #   tags: [pycharm]
   - role: crypt
     tags: [crypt]
   - role: other
     tags: [never,keychron]
-  - role: security
-    tags: [security,sec]
   - role: lab
     tags: [lab]
   - role: obsidian
     tags: [obsidian]
     vars:
-      obsidian_ver: 0.8.4
-  # - role: goland
-  #   tags: [goland]
-  #   vars:
-  #     goland_version: 2019.3
+      obsidian_ver: 0.8.9
+  - role: edu
+    tags: [edu]
+  - role: gnome-cleanup
+    tags: [gnome-cleanup]
+  - role: clouds
+    tags: [clouds]

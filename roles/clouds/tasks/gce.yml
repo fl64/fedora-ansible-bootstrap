@@ -15,5 +15,3 @@
       name:
       - google-cloud-sdk
       state: latest
-  tags:
-  - googlecloud

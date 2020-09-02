@@ -1,0 +1,13 @@
+- name: Git | Create global .gitignore
+  become: false
+  copy:
+    content: |
+      .envrc
+      .terraform
+      *.log
+    dest: "/home/{{ lookup('env','USER') }}/.gitignore_global"
+
+- git_config:
+    name: core.excludesfile
+    scope: global
+    value: ~/.gitignore_global

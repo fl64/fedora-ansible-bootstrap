@@ -1,0 +1,24 @@
+- name: Base | install sysutils
+  dnf:
+    name:
+    - htop
+    - iotop
+    - nmap
+    - fzf
+    - remmina
+    - jq
+    - asciinema
+    - peek
+    - ntpdate
+    - unrar
+    - tigervnc-server
+    - tmate #remote ssh share
+    - inotify-tools
+    - fuse-exfat
+    - timeshift
+    - exa
+    - lsd
+    - autojump
+    - autojump-zsh
+    - sysprof
+    state: latest

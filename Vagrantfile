@@ -3,10 +3,10 @@
 #goss_version="v0.3.6"
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "bento/fedora-31"
+  config.vm.box = "generic/fedora32"
   config.vm.synced_folder "./", "/bootstrap"
   config.vm.provider "virtualbox" do |vb|
-    vb.gui = false
+    vb.gui = true
     vb.memory = "2048"
   end
 

@@ -1,0 +1,45 @@
+# - name: DevOps | install terraform
+#   unarchive:
+#     src: https://releases.hashicorp.com/terraform/{{ terraform_ver }}/terraform_{{ terraform_ver }}_linux_amd64.zip
+#     dest: /usr/local/bin
+#     remote_src: yes
+#     mode: 0755
+
+# - name: DevOps | install packer
+#   unarchive:
+#     src: https://releases.hashicorp.com/packer/{{ packer_ver }}/packer_{{ packer_ver }}_linux_amd64.zip
+#     dest: /usr/local/bin
+#     remote_src: yes
+#     mode: 0755
+
+# - name: DevOps | install packer
+#   unarchive:
+#     src: https://releases.hashicorp.com/vagrant/{{ vagrant_ver }}/vagrant_{{ vagrant_ver }}_linux_amd64.zip
+#     dest: /usr/local/bin
+#     remote_src: yes
+#     mode: 0755
+
+- name: Hashicorp block
+  block:
+  - name: Hashicorp Repo
+    get_url:
+      url: https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+      dest: /etc/yum.repos.d/Hashicorp.repo
+
+  - name: Hashicorp | Install packages
+    dnf:
+      name:
+      - packer
+      - vagrant
+      - vault
+      state: latest
+      enablerepo: [hashicorp]
+
+  - name: Hashicorp | install Terraform
+    unarchive:
+      src: https://releases.hashicorp.com/terraform/{{ terraform_ver }}/terraform_{{ terraform_ver }}_linux_amd64.zip
+      dest: /usr/local/bin
+      remote_src: yes
+      mode: 0755
+
+  tags: hashicorp

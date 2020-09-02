@@ -1,0 +1,20 @@
+- name: DevOps | install minio client
+  get_url:
+    url:  https://dl.minio.io/client/mc/release/linux-amd64/mc
+    dest: /usr/local/bin/mc
+    mode: 0755
+
+- name: DevOps | install lazydocker
+  shell: |
+    curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+
+- name: DevOps | Install jsonnet
+  block:
+  - name: DevOps | add jsonnet copr
+    shell: dnf copr enable randomvariable/jsonnet -y
+    args:
+      creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:randomvariable:jsonnet.repo
+  - name: DevOps | Install jsonnet
+    dnf:
+      name: jsonnet
+      state: latest
