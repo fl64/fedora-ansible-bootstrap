@@ -4,10 +4,16 @@
     content: |
       .envrc
       .terraform
+      .vagrant
       *.log
-    dest: "/home/{{ lookup('env','USER') }}/.gitignore_global"
+      *.retry
+      *.tfstate
+      secret*
+    dest: "/home/{{ lookup('env','USER') }}/.gitignore"
 
-- git_config:
+- name: Git | Configure git settings
+  become: false
+  git_config:
     name: core.excludesfile
     scope: global
-    value: ~/.gitignore_global
+    value: "~/.gitignore"
