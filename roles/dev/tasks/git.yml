@@ -14,6 +14,23 @@
 - name: Git | Configure git settings
   become: false
   git_config:
-    name: core.excludesfile
+    name:  "{{ item.name }}"
+    scope: "{{ item.scope }}"
+    value: "{{ item.value }}"
+  with_items:
+  - name:  core.excludesfile
     scope: global
     value: "~/.gitignore"
+  - name:  alias.lg
+    scope: global
+    value: "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  - name:  alias.lgg
+    scope: global
+    value: "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+  - name:  alias.fire
+    scope: global
+    value: |
+         !sh -c "git checkout -b wip/fire/$USER && \
+         git stage -A && \
+         git commit -m wip-fire-alert && \
+         git push origin wip/fire/$USER"
