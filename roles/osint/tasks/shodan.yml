@@ -1,0 +1,5 @@
+- name: Install shodan CLI
+  become: false
+  pip:
+    name: shodan
+    extra_args: --user
