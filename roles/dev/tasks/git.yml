@@ -24,13 +24,19 @@
   - name:  alias.lg
     scope: global
     value: "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-  - name:  alias.lgg
-    scope: global
-    value: "log --graph --decorate --pretty=oneline --abbrev-commit --all"
   - name:  alias.fire
     scope: global
-    value: |
+    value: >
          !sh -c "git checkout -b wip/fire/$USER && \
          git stage -A && \
          git commit -m wip-fire-alert && \
          git push origin wip/fire/$USER"
+  - name:  blame.coloring
+    scope: global
+    value: highlightRecent
+  - name:  color.blame.highlightRecent
+    scope: global
+    value: blue,12 month ago,white,1 month ago,red
+  - name:  alias.lf
+    scope: global
+    value: log -p -M --follow --stat --
