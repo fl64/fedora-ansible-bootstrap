@@ -1,6 +1,7 @@
 - name: Vim | Install vim and plugins
   dnf:
     name:
+    - ranger
     - vim
     - vim-syntastic-go
     - vim-syntastic-rst

@@ -9,6 +9,7 @@
 
 - name:
   include: vim.yml
+  tags: [vim]
 
 - name:
   include: internet.yml
