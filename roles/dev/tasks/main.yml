@@ -22,3 +22,7 @@
 - name: Dev | github tools
   include: github.yml
   tags: [github]
+
+- name: Dev | goss
+  include: goss.yml
+  tags: [goss]

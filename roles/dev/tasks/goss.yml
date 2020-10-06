@@ -1,0 +1,8 @@
+- name: Dev | install goss latest
+  vars:
+    goss_url: https://github.com/aelsabbahy/goss/releases/latest/download/goss-linux-amd64
+  get_url:
+    url: "{{ goss_url }}"
+    dest: "/usr/local/bin/goss"
+    mode: '0755'
+    force: true
