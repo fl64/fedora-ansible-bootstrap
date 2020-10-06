@@ -5,6 +5,7 @@
     - strace
     - python3-virtualenv
     - git-secret
+    - ShellCheck #https://github.com/koalaman/shellcheck
     state: latest
 
 - name: Dev | NFPM
