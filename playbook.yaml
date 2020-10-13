@@ -51,6 +51,8 @@
   - role: iptables
     tags: [iptables]
   - role: crypt
+    vars:
+    - sops_ver: 3.6.1
     tags: [crypt]
   - role: other
     tags: [never,keychron]
