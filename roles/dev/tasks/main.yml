@@ -6,6 +6,7 @@
     - python3-virtualenv
     - git-secret
     - ShellCheck #https://github.com/koalaman/shellcheck
+    - hadolint
     state: latest
 
 - name: Dev | NFPM
