@@ -144,3 +144,9 @@ alias tfp="terraform plan -no-color | grep -E '(^.*[#~+-] .*|^[[:punct:]]|Plan)'
 
 ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt
 function ssh () {/usr/bin/ssh -t $@ "tmux attach || tmux new";}
+
+# generate QR code for input
+function generateqr () { printf "$@" | curl -F-=\<- qrenco.de }
+
+# get a list of files in the current folder and subfolders which contains the word “text”, the line number, and the line contact inside “less”
+function ftext () { grep -iIHrn --color=always "$1" . | less -R -r }
