@@ -15,7 +15,7 @@
   - role: dev
     tags: [dev]
     vars:
-      nfpm_ver: 1.8.0
+      nfpm_ver: 1.10.3
   - role: look_and_feel
     tags: [look,never]
   - role: syncthing
