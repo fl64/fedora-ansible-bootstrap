@@ -6,6 +6,9 @@
       dest: /usr/local/bin/gnomeshell-extension-manage
       mode: 0755
 
+
+## List installed gnome extenstions
+## gsettings get org.gnome.shell enabled-extensions
   - name: Look_and_feel | Install gnome exts
     become: false
     shell: |
