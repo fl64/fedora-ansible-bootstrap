@@ -3,6 +3,7 @@
   dnf:
     name:
     - keepass
+    - keepassxc
     state: present
   tags:
   - crypt
