@@ -24,6 +24,9 @@
   - name:  alias.lg
     scope: global
     value: "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  - name: alias.conflict
+    scope: global
+    value: "diff --name-only --diff-filter=U"
   - name:  alias.fire
     scope: global
     value: >
