@@ -1,5 +1,5 @@
 - name: Media | Install media
-  dnf:
+  package:
     name:
     - gstreamer-plugins-*
     - gstreamer1-plugins-*
@@ -19,7 +19,7 @@
     state: latest
 
 - name: Media | Cleanup
-  dnf:
+  package:
     name:
     - rhythmbox
     - cheese

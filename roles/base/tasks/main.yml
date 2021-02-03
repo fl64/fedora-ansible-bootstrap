@@ -1,6 +1,6 @@
 - name:
   include: base.yml
-
+  tags: [base]
 - name:
   include: media.yml
 

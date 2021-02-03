@@ -1,5 +1,5 @@
 - name: Vim | Install vim and plugins
-  dnf:
+  package:
     name:
     - ranger
     - vim

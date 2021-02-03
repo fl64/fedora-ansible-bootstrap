@@ -13,3 +13,7 @@
 - name:
   include: podman.yml
   tags: [podman]
+
+- name:
+  include: docker.yml
+  tags: [docker]

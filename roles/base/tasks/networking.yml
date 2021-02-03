@@ -1,6 +1,6 @@
 
 - name: Network | install packets
-  dnf:
+  package:
     name:
     - wireshark
     - wireshark-cli
@@ -13,11 +13,11 @@
     append: yes
 
 - name: Network | Install network utils
-  dnf:
+  package:
     name:
     - iftop
     - ifstat
-    - macchanger
+  # - macchanger
     - bind-utils
     - iperf
     - ethtool

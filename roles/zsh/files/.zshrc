@@ -151,3 +151,5 @@ function generateqr () { printf "$@" | curl -F-=\<- qrenco.de }
 
 # get a list of files in the current folder and subfolders which contains the word “text”, the line number, and the line contact inside “less”
 function ftext () { grep -iIHrn --color=always "$1" . | less -R -r }
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"

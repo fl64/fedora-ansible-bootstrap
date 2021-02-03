@@ -1,5 +1,5 @@
 - name: Internet | install sysinternet softutils
-  dnf:
+  package:
     name:
     - chromium
     - deluge
