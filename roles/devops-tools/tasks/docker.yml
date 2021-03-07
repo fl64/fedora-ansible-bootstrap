@@ -1,0 +1,32 @@
+- name: docker | install docker
+  block:
+    - name: docker | install repo
+      yum_repository:
+        name: docker-ce
+        description: Docker CE Stable
+        baseurl: "https://download.docker.com/linux/fedora/31/$basearch/stable"
+        gpgkey: "https://download.docker.com/linux/fedora/gpg"
+        gpgcheck: true
+        enabled: true
+
+    - name: docker | Install docker
+      dnf:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: latest
+        update_cache: true
+
+    - name: docker | Enable docker
+      systemd:
+        name: docker
+        daemon_reload: true
+        enabled: true
+        state: started
+
+    - name: adding existing user "{{ lookup('env','USER') }}" to group docker
+      user:
+        name: "{{ lookup('env','USER') }}"
+        groups: docker
+        append: true

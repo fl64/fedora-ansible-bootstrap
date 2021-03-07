@@ -4,5 +4,6 @@
     - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version }}.noarch.rpm
     - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm
     state: present
+    disable_gpg_check: true
   tags:
   - rpm_fusion

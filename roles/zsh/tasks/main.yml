@@ -34,15 +34,18 @@
     git:
       repo: https://github.com/zsh-users/zsh-syntax-highlighting
       dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+      force: true
   - name: zsh | Install zsh-autosuggestions
     git:
       repo: https://github.com/zsh-users/zsh-autosuggestions
       dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+      force: true
   # https://medium.com/@alex285/get-powerlevel9k-the-most-cool-linux-shell-ever-1c38516b0caa
   - name: zsh | Install powerlevel9k
     git:
       repo: https://github.com/bhilburn/powerlevel9k.git
       dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/themes/powerlevel9k"
+      force: true
   - name: zsh | Copy .zshrc config
     copy:
       src: "{{ item }}"
@@ -68,6 +71,7 @@
     git:
       repo: https://github.com/sobolevn/wakatime-zsh-plugin.git
       dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/plugins/wakatime"
+      force: true
   when: wakatime|bool
   tags:
   - zsh

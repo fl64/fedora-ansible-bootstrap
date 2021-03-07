@@ -8,7 +8,7 @@
   roles:
   - role: rpm-fusion
     vars:
-      fedora_version: 32
+      fedora_version: 33
     tags: [fusion]
   - role: base
     tags: [base]
@@ -26,12 +26,12 @@
     tags: [subl]
   - role: insync
     vars:
-      fedora_version_fallback: 32
+      fedora_version_fallback: 33
     tags: [insync]
   - role: vbox
     vars:
-      fedora_version: 32
-      vbox_version: 6.1
+      fedora_version: 33
+      vbox_version: 6.1.18
     tags: [vbox]
   - role: zsh
     vars:
