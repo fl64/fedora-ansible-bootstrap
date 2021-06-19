@@ -32,24 +32,17 @@
 
 - name: K8s | install k9s
   unarchive:
-    src: https://github.com/derailed/k9s/releases/download/{{ k9s_ver }}/k9s_Linux_x86_64.tar.gz
+    src: https://github.com/derailed/k9s/releases/download/{{ k9s_ver }}/k9s_{{ k9s_ver }}_Linux_x86_64.tar.gz
     dest: /usr/local/bin
     remote_src: yes
     mode: 0755
 
 - name: K8s | install kubespy
   unarchive:
-    src: https://github.com/pulumi/kubespy/releases/download/{{ kubespy_ver }}/kubespy-linux-amd64.tar.gz
+    src: https://github.com/pulumi/kubespy/releases/download/{{ kubespy_ver }}/kubespy-{{ kubespy_ver }}-linux-amd64.tar.gz
     dest: /usr/local/bin
     extra_opts:
     - --strip-components=2
-    remote_src: yes
-    mode: 0755
-
-- name: K8s | install kubectl debug
-  unarchive:
-    src: https://github.com/aylei/kubectl-debug/releases/download/v{{ kubectldebug_ver }}/kubectl-debug_{{ kubectldebug_ver }}_linux_amd64.tar.gz
-    dest: /usr/local/bin
     remote_src: yes
     mode: 0755
 

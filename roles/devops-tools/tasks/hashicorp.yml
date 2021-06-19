@@ -32,14 +32,15 @@
       - packer
       - vagrant
       - vault
+      - terraform
       state: latest
       enablerepo: [hashicorp]
 
-  - name: Hashicorp | install Terraform
-    unarchive:
-      src: https://releases.hashicorp.com/terraform/{{ terraform_ver }}/terraform_{{ terraform_ver }}_linux_amd64.zip
-      dest: /usr/local/bin
-      remote_src: yes
-      mode: 0755
+  # - name: Hashicorp | install Terraform
+  #   unarchive:
+  #     src: https://releases.hashicorp.com/terraform/{{ terraform_ver }}/terraform_{{ terraform_ver }}_linux_amd64.zip
+  #     dest: /usr/local/bin
+  #     remote_src: yes
+  #     mode: 0755
 
   tags: hashicorp

@@ -1,6 +1,6 @@
 - name: Dev | install cfssl
   vars:
-    cfssl_ver: 1.4.1
+    #cfssl_ver: 1.4.1
     cfssl_url: https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_ver }}
   get_url:
     url: "{{ cfssl_url }}/{{ item.src }}"

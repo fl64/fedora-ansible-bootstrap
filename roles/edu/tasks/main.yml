@@ -1,6 +1,0 @@
-- name: edu | install exercism
-  unarchive:
-    src: https://github.com/exercism/cli/releases/download/v3.0.13/exercism-3.0.13-linux-x86_64.tar.gz
-    dest: /usr/local/bin
-    remote_src: yes
-    mode: 0755

@@ -8,7 +8,7 @@
   roles:
   - role: rpm-fusion
     vars:
-      fedora_version: 33
+      fedora_version: 34
     tags: [fusion]
   - role: base
     tags: [base]
@@ -16,6 +16,7 @@
     tags: [dev]
     vars:
       nfpm_ver: 1.10.3
+      cfssl_ver: 1.6.0
   - role: look_and_feel
     tags: [look,never]
   - role: syncthing
@@ -30,8 +31,8 @@
     tags: [insync]
   - role: vbox
     vars:
-      fedora_version: 33
-      vbox_version: 6.1.18
+      fedora_version: 34
+      vbox_version: 6.1.22
     tags: [vbox]
   - role: zsh
     vars:
@@ -39,12 +40,10 @@
     tags: [zsh]
   - role: devops-tools
     vars:
-      terraform_ver: 0.12.20
-      kubespy_ver: v0.5.1
-      kind_ver: v0.8.1
-      k9s_ver: v0.21.7
-      kubectldebug_ver: 0.1.1
-      helm_ver: v3.3.1
+      kubespy_ver: v0.6.0
+      kind_ver: v0.11.1
+      k9s_ver: v0.24.10
+      helm_ver: v3.6.1
     tags: [devops]
   - role: sysctl
     tags: [sysctl]
@@ -61,12 +60,10 @@
   - role: obsidian
     tags: [obsidian]
     vars:
-      obsidian_ver: 0.8.9
-  - role: edu
-    tags: [edu]
+      obsidian_ver: 0.12.4
   - role: gnome-cleanup
     tags: [gnome-cleanup]
   - role: clouds
-    tags: [clouds]
+    tags: [clouds,never]
   - role: osint
     tags: [osint]

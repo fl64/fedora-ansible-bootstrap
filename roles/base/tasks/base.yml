@@ -9,7 +9,7 @@
       - jq
       - asciinema
       - peek
-      - ntpdate
+      #- ntpdate
       - unrar
       - tigervnc-server
       - tmate #remote ssh share
