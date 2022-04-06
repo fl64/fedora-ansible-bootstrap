@@ -1,3 +1,0 @@
-- name:
-  include: gce.yml
-  tags: [gce]

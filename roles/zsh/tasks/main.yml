@@ -1,7 +1,7 @@
 - name: zsh | Install zsh
   block:
   - name: zsh | install zsh
-    dnf:
+    package:
       name: zsh
       state: latest
   - name: zsh | Set user shell
@@ -57,32 +57,3 @@
   tags:
   - zsh
   - oh-my-zsh
-
-- name: zsh | install Wakatime
-  become: false
-  block:
-  - name: zsh | install Wakatime zsh plugin
-    pip:
-      name: wakatime>=12.0
-      extra_args: --user
-      executable: pip3
-
-  - name: zsh | install Wakatime zsh plugin
-    git:
-      repo: https://github.com/sobolevn/wakatime-zsh-plugin.git
-      dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/plugins/wakatime"
-      force: true
-  when: wakatime|bool
-  tags:
-  - zsh
-  - waka
-
-- name: term  | install termtosvg
-  become: false
-  pip:
-    name: termtosvg
-    extra_args: --user
-    executable: pip3
-  tags:
-  - termtosvg
-  - term

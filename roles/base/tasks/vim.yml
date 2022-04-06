@@ -1,20 +1,10 @@
-- name: Vim | Install vim and plugins
+- name: vim | install vim
   package:
     name:
-    - ranger
     - vim
-    - vim-syntastic-go
-    - vim-syntastic-rst
-    - vim-syntastic-xml
-    - vim-syntastic-zsh
-    - vim-syntastic-text
-    - vim-syntastic-yaml
-    - vim-syntastic-ansible
-    - vim-syntastic-python
-    - vim-syntastic-json
     state: latest
 
-- name: Vim | Vim config
+- name: vim | configure vim
   copy:
     content: |
       colorscheme industry

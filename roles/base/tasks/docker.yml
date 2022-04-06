@@ -1,0 +1,42 @@
+- name: docker | install docker
+  block:
+    - name: docker | add key for docker repo
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        keyring: /usr/share/keyrings/docker-archive-keyring.gpg
+
+    - name: docker | add docker repo
+      ansible.builtin.apt_repository:
+        repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+        state: present
+        filename: docker
+
+    - name: docker | install docker
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: latest
+
+    - name: docker | enable docker service
+      systemd:
+        name: docker
+        daemon_reload: true
+        enabled: true
+        state: started
+
+    - name: docker | adding existing user "{{ lookup('env','USER') }}" to group docker
+      user:
+        name: "{{ lookup('env','USER') }}"
+        groups: docker
+        append: true
+
+- name: docker | install docker-compose {{ docker_compose_ver }}
+  vars:
+    docker_compose_ver: 1.29.2
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/{{ docker_compose_ver }}/docker-compose-Linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+    force: true
+    mode: 0755

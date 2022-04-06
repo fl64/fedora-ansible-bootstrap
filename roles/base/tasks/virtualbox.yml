@@ -1,0 +1,20 @@
+- name: virtualbox | install virtualbox
+  block:
+    - name: virtualbox | add apt key
+      ansible.builtin.apt_key:
+        url: "https://www.virtualbox.org/download/{{ item }}"
+      with_items:
+      - oracle_virtualbox_2016.asc
+      - oracle_virtualbox.asc
+
+    - name: virtualbox | add repo
+      ansible.builtin.apt_repository:
+        repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib
+        state: present
+        filename: virtualbox
+
+    - name: virtualbox | install
+      apt:
+        name:
+          -  virtualbox-6.1
+        state: latest

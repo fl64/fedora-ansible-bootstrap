@@ -1,5 +1,0 @@
-- name: NFPM | install package
-  dnf:
-    name: "https://github.com/goreleaser/nfpm/releases/download/v{{ nfpm_ver }}/nfpm_amd64.rpm"
-    state: present
-    disable_gpg_check: true

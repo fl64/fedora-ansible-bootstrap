@@ -1,9 +1,0 @@
-- name: Gitlab CLI |  Add repo
-  get_url:
-    url: https://cli.github.com/packages/rpm/gh-cli.repo
-    dest: /etc/yum.repos.d/
-
-- name: Gitlab CLI | Install package
-  dnf:
-    name: gh
-    state: present

@@ -6,64 +6,11 @@
   diff: yes
   become: yes
   roles:
-  - role: rpm-fusion
-    vars:
-      fedora_version: 34
-    tags: [fusion]
   - role: base
     tags: [base]
-  - role: dev
-    tags: [dev]
-    vars:
-      nfpm_ver: 1.10.3
-      cfssl_ver: 1.6.0
-  - role: look_and_feel
-    tags: [look,never]
-  - role: syncthing
-    tags: [syncthing]
-  - role: vscode
-    tags: [vs]
-  - role: sublime
-    tags: [subl]
-  - role: insync
-    vars:
-      fedora_version_fallback: 33
-    tags: [insync]
-  - role: vbox
-    vars:
-      fedora_version: 34
-      vbox_version: 6.1.22
-    tags: [vbox]
   - role: zsh
-    vars:
-      wakatime: true
     tags: [zsh]
-  - role: devops-tools
-    vars:
-      kubespy_ver: v0.6.0
-      kind_ver: v0.11.1
-      k9s_ver: v0.24.10
-      helm_ver: v3.6.1
-    tags: [devops]
   - role: sysctl
     tags: [sysctl]
-  - role: iptables
-    tags: [iptables]
-  - role: crypt
-    vars:
-    - sops_ver: 3.6.1
-    tags: [crypt]
-  - role: other
-    tags: [never,keychron]
-  - role: lab
-    tags: [lab]
-  - role: obsidian
-    tags: [obsidian]
-    vars:
-      obsidian_ver: 0.12.4
-  - role: gnome-cleanup
-    tags: [gnome-cleanup]
-  - role: clouds
-    tags: [clouds,never]
-  - role: osint
-    tags: [osint]
+  - role: keychron
+    tags: [keychron]

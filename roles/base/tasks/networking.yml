@@ -1,25 +1,21 @@
+# - name: Network | Adding user to group
+#   user:
+#     name: "{{ lookup('env','USER') }}"
+#     groups: wireshark
+#     append: yes
 
-- name: Network | install packets
-  package:
-    name:
-    - wireshark
-    - wireshark-cli
-    state: latest
-
-- name: Network | Adding user to group
-  user:
-    name: "{{ lookup('env','USER') }}"
-    groups: wireshark
-    append: yes
-
-- name: Network | Install network utils
+- name: network | install network utils
   package:
     name:
     - iftop
     - ifstat
-  # - macchanger
-    - bind-utils
+    - macchanger
+    - bind9-dnsutils
     - iperf
     - ethtool
     - nmap
+    - shadowsocks-libev
+    - tsocks
+    - wireshark
+    - wireshark-common
     state: latest

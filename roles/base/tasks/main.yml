@@ -1,6 +1,6 @@
 - name:
   include: base.yml
-  tags: [base]
+  tags: [b]
 - name:
   include: media.yml
 
@@ -12,8 +12,33 @@
   tags: [vim]
 
 - name:
-  include: internet.yml
+  include: dev.yml
+  tags: [dev]
 
 - name:
   include: terminal.yml
   tags: [terminal]
+
+- name:
+  include: snap.yml
+  tags: [snap]
+
+- name:
+  include: cfssl.yml
+  tags: [cfssl]
+
+- name:
+  include: docker.yml
+  tags: [docker]
+
+- name:
+  include: k8s.yml
+  tags: [k8s]
+
+- name:
+  include: virtualbox.yml
+  tags: [vbox]
+
+- name:
+  include: hasicorp.yml
+  tags: [hashicorp, tf, vault, packer]

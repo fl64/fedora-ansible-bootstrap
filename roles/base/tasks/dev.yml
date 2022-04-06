@@ -1,0 +1,14 @@
+
+- name: dev | install dev tools
+  package:
+    name:
+    - python3-pip
+
+- name: dev | install golan {{ go_ver }}
+  vars:
+    go_ver: 1.18.1
+  unarchive:
+    src: "https://go.dev/dl/go{{ go_ver }}.linux-amd64.tar.gz"
+    dest: /usr/local/
+    remote_src: yes
+    mode: 0755

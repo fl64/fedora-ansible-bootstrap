@@ -1,8 +1,6 @@
-- name: Media | Install media
+- name: media | install media apps
   package:
     name:
-    - gstreamer-plugins-*
-    - gstreamer1-plugins-*
     - minidlna
     - flameshot
     - peek
@@ -10,24 +8,14 @@
     - inkscape
     - gimp
     - vlc
-    - ffmpeg-libs
     - youtube-dl
-    - ImageMagick
     - audacious
-    - hydrapaper
     - pinta
     state: latest
 
-- name: Media | Cleanup
+- name: medai | cleanup
   package:
     name:
     - rhythmbox
     - cheese
     state: absent
-
-- name: Media | audacious winamp skin
-  copy:
-    src: "{{ item }}"
-    dest: /usr/share/audacious/Skins/
-  with_fileglob:
-  - "*.wsz"

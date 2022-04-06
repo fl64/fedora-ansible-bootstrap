@@ -82,7 +82,6 @@ plugins=(
     zsh-syntax-highlighting
     zsh-autosuggestions
     kubectl
-    wakatime
     )
 
 
@@ -153,3 +152,7 @@ function generateqr () { printf "$@" | curl -F-=\<- qrenco.de }
 function ftext () { grep -iIHrn --color=always "$1" . | less -R -r }
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH

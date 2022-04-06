@@ -1,0 +1,111 @@
+- name: k8s | install k8s repo
+  block:
+    - name: k8s |add key for k8s repo
+      ansible.builtin.apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        keyring: /usr/share/keyrings/kubernetes-archive-keyring.gpg
+
+    - name: k8s |add k8s repo
+      ansible.builtin.apt_repository:
+        repo: deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
+        state: present
+        filename: docker
+
+    - name: k8s |install k8s apps
+      apt:
+        name:
+          - kubectl
+        state: latest
+  tags:
+  - kubectl
+
+- name: k8s |install k9s {{ k9s_ver }}
+  vars:
+    k9s_ver: 0.26.3
+  unarchive:
+    src: "https://github.com/derailed/k9s/releases/download/v{{ k9s_ver }}/k9s_Linux_x86_64.tar.gz"
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755
+  tags:
+  - k9s
+
+- name: k8s |install minkube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    force: true
+    dest: "/usr/local/bin/minikube"
+    mode: 0755
+  tags:
+  - minikube
+
+- name: k8s |install kubespy {{ kubespy_ver }}
+  vars:
+    kubespy_ver: v0.6.0
+  unarchive:
+    src: https://github.com/pulumi/kubespy/releases/download/{{ kubespy_ver }}/kubespy-{{ kubespy_ver }}-linux-amd64.tar.gz
+    dest: /usr/local/bin
+    extra_opts:
+    - --strip-components=2
+    remote_src: yes
+    mode: 0755
+  tags:
+  - kubespy
+
+- name: k8s |install helm {{ helm_ver }}
+  vars:
+    helm_ver: v3.9.0
+  unarchive:
+    src: "https://get.helm.sh/helm-{{ helm_ver }}-linux-amd64.tar.gz" #https://storage.googleapis.com/kubernetes-helm/helm-{{ helm_ver }}-linux-amd64.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
+    extra_opts:
+      - --strip-components=1
+      - linux-amd64/helm
+    #creates: /usr/local/bin/helm
+  tags:
+  - helm
+
+- name: k8s |install krew
+  unarchive:
+    src: https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz
+    dest: /tmp
+    extra_opts:
+    - --strip=1
+    - --wildcards
+    - '*/krew-linux_amd64'
+    remote_src: True
+  tags:
+  - krew
+
+- name: k8s |rename krew
+  copy:
+    remote_src: True
+    src: /tmp/krew-linux_amd64
+    dest: /usr/local/bin/krew
+    mode: 0755
+  tags:
+  - krew
+
+- name: k8s |install krew
+  unarchive:
+    src: https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz
+    dest: /tmp
+    extra_opts:
+    - --strip=1
+    - --wildcards
+    - '*/krew-linux_amd64'
+    remote_src: True
+  tags:
+  - krew
+
+- name: k8s | install istioctl {{ istioctl_ver }}
+  vars:
+    istioctl_ver: 1.14.3
+  unarchive:
+    src: "https://github.com/istio/istio/releases/download/{{ istioctl_ver }}/istioctl-{{ istioctl_ver }}-linux-amd64.tar.gz"
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755
+  tags:
+  - istioctl

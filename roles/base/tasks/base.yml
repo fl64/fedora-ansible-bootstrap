@@ -1,4 +1,4 @@
-- name: Base | install sysutils
+- name: install base apps
   package:
     name:
       - htop
@@ -9,17 +9,62 @@
       - jq
       - asciinema
       - peek
-      #- ntpdate
       - unrar
-      - tigervnc-server
       - tmate #remote ssh share
       - inotify-tools
-      - fuse-exfat
       - timeshift
-      - exa
-      - lsd
-      - autojump
-      - autojump-zsh
       - sysprof
-      - ripgrep
+      - direnv
+      - tmux
     state: latest
+
+- name: lynis | install lynis
+  block:
+    - name: lynis | add apt key
+      ansible.builtin.apt_key:
+        url: https://packages.cisofy.com/keys/cisofy-software-public.key
+
+    - name: lynis | add repo
+      ansible.builtin.apt_repository:
+        repo: deb https://packages.cisofy.com/community/lynis/deb/ stable main
+        state: present
+        filename: lynis
+
+    - name: lynis | docker
+      apt:
+        name:
+          - lynis
+        state: latest
+
+- name: yq | install yq {{ yq_ver }}
+  vars:
+    yq_ver: v4.27.3
+  unarchive:
+    src: "https://github.com/mikefarah/yq/releases/download/{{ yq_ver }}/yq_linux_amd64.tar.gz"
+    dest: /usr/local/
+    remote_src: yes
+    mode: 0755
+
+
+# - name: Base | Add exa ppa repo
+#   apt_repository:
+#     validate_certs: no
+#     repo: 'ppa:spvkgn/exa'
+#     state: present
+
+# - name: Base | install exa
+#   package:
+#     name:
+#       - exa
+#     state: latest
+
+# - name: install helm {{ helm_ver }}
+#   vars:
+#     helm_ver: v3.8.1
+#   unarchive:
+#     src: https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip
+#     dest: /tmp
+#     remote_src: yes
+#     extra_opts:
+#       - --strip-components=1
+#       - --directory=bin

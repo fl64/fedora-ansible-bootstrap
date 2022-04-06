@@ -1,9 +1,0 @@
-
-- name: Podman | Install packets
-  dnf:
-    name:
-      - podman
-      - podman-compose
-      - podman-plugins
-    state: latest
-    update_cache: yes

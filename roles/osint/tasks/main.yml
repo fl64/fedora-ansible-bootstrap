@@ -1,3 +1,0 @@
----
-- name: OSINT | shodan
-  include: shodan.yml

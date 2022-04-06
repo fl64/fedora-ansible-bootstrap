@@ -1,12 +1,12 @@
 
 
-- name: Terminal | install sysutils
+- name: install tilix
   package:
     name: tilix
     state: latest
 
 # dconf dump /com/gexperts/Tilix/
-- name: Terminal | tilix settings
+- name: terminal | set tilix settings
   become: false
   shell: |
     dconf load /com/gexperts/Tilix/ << EOF
@@ -33,12 +33,18 @@
     visible-name='Default'
     EOF
 
-- name: Terminal | install direnv
-  vars:
-    direnv_ver: 2.22.0
-    direnv_url: https://github.com/direnv/direnv/releases/download/v{{ direnv_ver }}/direnv.linux-amd64
-  get_url:
-    url: "{{ direnv_url }}"
-    dest: "/usr/local/bin/direnv"
-    mode: '0755'
-    force: true
+# - name: Terminal | install direnv
+#   vars:
+#     direnv_ver: 2.22.0
+#     direnv_url: https://github.com/direnv/direnv/releases/download/v{{ direnv_ver }}/direnv.linux-amd64
+#   get_url:
+#     url: "{{ direnv_url }}"
+#     dest: "/usr/local/bin/direnv"
+#     mode: '0755'
+#     force: true
+
+- name: "Fix ~[[200 issue"
+  ansible.builtin.lineinfile:
+    path: "{{ lookup('env','HOME') }}/.inputrc"
+    regexp: '^set enable-bracketed-paste.+'
+    line: set enable-bracketed-paste off

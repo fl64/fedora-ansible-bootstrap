@@ -1,10 +1,10 @@
-- name: Look_and_feel | Install fonts
-  dnf:
-    name:
-    - mozilla-fira-*
-    - google-noto-sans-fonts
-    state: present
-  tags: [fonts]
+# - name: Look_and_feel | Install fonts
+    # apt:
+    #   name:
+    #   #- mozilla-fira-*
+    #   - google-noto-sans-fonts
+    #   state: present
+    # tags: [fonts]
 
 - name: Look_and_feel | install Nerd fonts
   become: false
@@ -33,7 +33,7 @@
     - { font: "FiraCode", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/FiraCode.zip"}
     - { font: "Inconsolata", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Inconsolata.zip"}
     - { font: "FiraMono", link: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/FiraMono.zip"}
-    - { font: "JetBrainsMono", link: "https://download.jetbrains.com/fonts/JetBrainsMono-1.0.0.zip"}
+    - { font: "JetBrainsMono", link: "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.242/JetBrainsMono-2.242.zip"}
     - { font: "Iosevka", link: "https://github.com/be5invis/Iosevka/releases/download/v3.4.6/ttf-iosevka-3.4.6.zip"}
     - { font: "IosevkaTerm", link: "https://github.com/be5invis/Iosevka/releases/download/v3.4.6/ttf-iosevka-term-3.4.6.zip"}
 
