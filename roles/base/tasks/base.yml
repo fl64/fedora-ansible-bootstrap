@@ -38,13 +38,14 @@
 
 - name: yq | install yq {{ yq_ver }}
   vars:
-    yq_ver: v4.27.3
-  unarchive:
-    src: "https://github.com/mikefarah/yq/releases/download/{{ yq_ver }}/yq_linux_amd64.tar.gz"
-    dest: /usr/local/
-    remote_src: yes
+    yq_ver: v4.27.5
+  get_url:
+    url: "https://github.com/mikefarah/yq/releases/download/{{ yq_ver }}/yq_linux_amd64"
+    dest: /usr/local/bin/yq
+    force: true
     mode: 0755
-
+  tags:
+  - yq
 
 # - name: Base | Add exa ppa repo
 #   apt_repository:
