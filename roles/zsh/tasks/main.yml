@@ -40,11 +40,16 @@
       repo: https://github.com/zsh-users/zsh-autosuggestions
       dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
       force: true
-  # https://medium.com/@alex285/get-powerlevel9k-the-most-cool-linux-shell-ever-1c38516b0caa
-  - name: zsh | Install powerlevel9k
+  - name: zsh | Install zsh-kubectl-prompt
     git:
-      repo: https://github.com/bhilburn/powerlevel9k.git
-      dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/themes/powerlevel9k"
+      repo: https://github.com/superbrothers/zsh-kubectl-prompt
+      dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/plugins/zsh-kubectl-prompt"
+      force: true
+  # https://medium.com/@alex285/get-powerlevel9k-the-most-cool-linux-shell-ever-1c38516b0caa
+  - name: zsh | Install powerlevel10k
+    git:
+      repo: https://github.com/romkatv/powerlevel10k.git
+      dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/themes/powerlevel10k"
       force: true
   - name: zsh | Copy .zshrc config
     copy:

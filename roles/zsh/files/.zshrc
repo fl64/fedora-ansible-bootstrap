@@ -9,7 +9,7 @@ export ZSH="/home/user/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="agnoster"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -72,23 +72,23 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(
     git
     ansible
-    dnf
     docker
     direnv
     docker-compose
     helm
-    nmap
     vagrant
     zsh-syntax-highlighting
     zsh-autosuggestions
+    zsh-kubectl-prompt
     kubectl
+    istioctl
     )
 
 
 
 POWERLEVEL9K_MODE="nerdfont-complete"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time ssh)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs )
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(kubecontext status time ssh)
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=""
@@ -98,7 +98,7 @@ export PATH=$PATH:~/.local/bin
 
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zshrc_my
+#source ~/.zshrc_my
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -156,3 +156,20 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# FL
+eval $( keychain --eval -q )
+/usr/bin/keychain --inherit any --confirm $HOME/.ssh/id_rsa
+/usr/bin/keychain --inherit any --confirm $HOME/.ssh/tfadm-id-rsa
+
+export PATH="${PATH}:/home/user/bin"
+# FL
+
+alias d8l="kubectl -n d8-system logs -f deployments/deckhouse | jq '. | select(.level | test(\"info|error|warn\")) | select(.msg | test(\".+deprecated.+\") | not ) | { level: .level, hook: .hook, msg: .msg}' -c"
+alias d8le="kubectl -n d8-system logs --tail=100 -f deployments/deckhouse | jq '. | select(.level | test(\"error\")) | select(.msg | test(\".+deprecated.+\") | not ) | { level: .level, hook: .hook, msg: .msg}' -c"
+alias d8lw="kubectl -n d8-system logs --tail=100 -f deployments/deckhouse | jq '. | select(.level | test(\"error|warn\")) | select(.msg | test(\".+deprecated.+\") | not ) | { level: .level, hook: .hook, msg: .msg}' -c"
+alias d8e="kubectl -n d8-system edit cm deckhouse"
+alias d8-ce="kubectl edit cm -n d8-cni-cilium cilium-config"
+alias d8-cl="kubectl -n d8-cni-cilium logs daemonsets/agent -f"
+
+. <(istioctl completion zsh)
