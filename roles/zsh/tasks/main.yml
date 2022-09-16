@@ -40,11 +40,11 @@
       repo: https://github.com/zsh-users/zsh-autosuggestions
       dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
       force: true
-  - name: zsh | Install zsh-kubectl-prompt
-    git:
-      repo: https://github.com/superbrothers/zsh-kubectl-prompt
-      dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/plugins/zsh-kubectl-prompt"
-      force: true
+  # - name: zsh | Install zsh-kubectl-prompt
+  #   git:
+  #     repo: https://github.com/superbrothers/zsh-kubectl-prompt
+  #     dest: "/home/{{ lookup('env','USER') }}/.oh-my-zsh/custom/plugins/zsh-kubectl-prompt"
+  #     force: true
   # https://medium.com/@alex285/get-powerlevel9k-the-most-cool-linux-shell-ever-1c38516b0caa
   - name: zsh | Install powerlevel10k
     git:
